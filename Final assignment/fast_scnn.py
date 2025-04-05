@@ -1,21 +1,11 @@
-###########################################################################
-# Created by: Tramac
-# Date: 2019-03-25
-# Copyright (c) 2017
-###########################################################################
-
 """Fast Segmentation Convolutional Neural Network"""
-import os
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-__all__ = ['FastSCNN', 'get_fast_scnn']
-
-
-class FastSCNN(nn.Module):
-    def __init__(self, num_classes, aux=False, **kwargs):
-        super(FastSCNN, self).__init__()
+class Model(nn.Module):
+    def __init__(self, num_classes=19, aux=False, **kwargs):
+        super(Model, self).__init__()
         self.aux = aux
         self.learning_to_downsample = LearningToDownsample(32, 48, 64)
         self.global_feature_extractor = GlobalFeatureExtractor(64, [64, 96, 128], 128, 6, [3, 3, 3])
@@ -36,14 +26,14 @@ class FastSCNN(nn.Module):
         x = self.global_feature_extractor(higher_res_features)
         x = self.feature_fusion(higher_res_features, x)
         x = self.classifier(x)
-        outputs = []
         x = F.interpolate(x, size, mode='bilinear', align_corners=True)
-        outputs.append(x)
+
         if self.aux:
             auxout = self.auxlayer(higher_res_features)
             auxout = F.interpolate(auxout, size, mode='bilinear', align_corners=True)
-            outputs.append(auxout)
-        return tuple(outputs)
+            return x, auxout
+
+        return x
 
 
 class _ConvBNReLU(nn.Module):
@@ -231,27 +221,3 @@ class Classifer(nn.Module):
         x = self.dsconv2(x)
         x = self.conv(x)
         return x
-
-
-def get_fast_scnn(dataset='citys', pretrained=False, root='./weights', map_cpu=False, **kwargs):
-    acronyms = {
-        'pascal_voc': 'voc',
-        'pascal_aug': 'voc',
-        'ade20k': 'ade',
-        'coco': 'coco',
-        'citys': 'citys',
-    }
-    from data_loader import datasets
-    model = FastSCNN(datasets[dataset].NUM_CLASS, **kwargs)
-    if pretrained:
-        if(map_cpu):
-            model.load_state_dict(torch.load(os.path.join(root, 'fast_scnn_%s.pth' % acronyms[dataset]), map_location='cpu'))
-        else:
-            model.load_state_dict(torch.load(os.path.join(root, 'fast_scnn_%s.pth' % acronyms[dataset])))
-    return model
-
-
-if __name__ == '__main__':
-    img = torch.randn(2, 3, 256, 512)
-    model = get_fast_scnn('citys')
-    outputs = model(img)

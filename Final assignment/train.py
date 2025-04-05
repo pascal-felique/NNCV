@@ -30,7 +30,7 @@ from torchvision.transforms.v2 import (
     ToDtype,
 )
 
-from unet import UNet
+from fast_scnn import Model
 
 
 # Mapping class IDs to train IDs
@@ -57,7 +57,7 @@ def convert_train_id_to_color(prediction: torch.Tensor) -> torch.Tensor:
 
 def get_args_parser():
 
-    parser = ArgumentParser("Training script for a PyTorch U-Net model")
+    parser = ArgumentParser("Training script for a PyTorch model")
     parser.add_argument("--data-dir", type=str, default="./data/cityscapes", help="Path to the training data")
     parser.add_argument("--batch-size", type=int, default=64, help="Training batch size")
     parser.add_argument("--epochs", type=int, default=10, help="Number of training epochs")
@@ -131,7 +131,7 @@ def main(args):
     )
 
     # Define the model
-    model = UNet(
+    model = Model(
         in_channels=3,  # RGB images
         n_classes=19,  # 19 classes in the Cityscapes dataset
     ).to(device)
