@@ -178,3 +178,4 @@ container.sif
 data.zip
 data/
 wandb/
+checkpoints/
