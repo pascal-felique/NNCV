@@ -60,7 +60,9 @@ image_height4=240
 image_width5=384
 image_height5=192
 
+###########################
 # Select image resolution
+###########################
 image_width=image_width1
 image_height=image_height1
 
