@@ -48,23 +48,23 @@ image_height1=384
 image_width2=576
 image_height2=288
 
-# 512×256
-image_width3=512
-image_height3=256
+# 2048×1024
+image_width3=2048
+image_height3=1024
 
-# 480×240
-image_width4=480
-image_height4=240
+# 1536x768
+image_width4=1536
+image_height4=768
 
-# 384×192
-image_width5=384
-image_height5=192
+# 1024×512
+image_width5=1024
+image_height5=512
 
 ###########################
 # Select image resolution
 ###########################
-image_width=image_width1
-image_height=image_height1
+image_width=image_width2
+image_height=image_height2
 
 # Function to calculate mean and standard deviation
 def calculate_mean_std(dataloader):
