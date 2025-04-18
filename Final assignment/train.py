@@ -38,6 +38,32 @@ from torchvision.transforms.v2 import (
 #from unet import Model
 from fast_scnn import Model
 
+
+# Define image resolutions
+# 768×384
+image_width1=768
+image_height1=384
+
+# 576×288
+image_width2=576
+image_height2=288
+
+# 512×256
+image_width3=512
+image_height3=256
+
+# 480×240
+image_width4=480
+image_height4=240
+
+# 384×192
+image_width5=384
+image_height5=192
+
+# Select image resolution
+image_width=image_width1
+image_height=image_height1
+
 # Function to calculate mean and standard deviation
 def calculate_mean_std(dataloader):
     mean = torch.zeros(3)
@@ -148,7 +174,7 @@ def main(args):
     train_transform = Compose([
     ToImage(),
     RandomHorizontalFlip(p=0.5),
-    RandomResizedCrop(size=(768, 384), scale=(0.5, 2.0), ratio=(0.75, 1.33)),  # same aspect ratio as original
+    RandomResizedCrop(size=(image_width, image_height), scale=(0.5, 2.0), ratio=(0.75, 1.33)),  # same aspect ratio as original
     ColorJitter(brightness=0.3, contrast=0.3, saturation=0.3, hue=0.1),  # photometric augmentations
     ToDtype(torch.float32, scale=True),  # normalize pixel scale
     Normalize(mean.tolist(), std.tolist())  # apply mean/std normalization last
@@ -156,7 +182,7 @@ def main(args):
 
     valid_transform = Compose([
         ToImage(),
-        Resize((768, 384)),
+        Resize((image_width, image_height)),
         ToDtype(torch.float32, scale=True),
         Normalize(mean.tolist(), std.tolist()),
     ])
