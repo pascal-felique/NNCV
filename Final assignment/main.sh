@@ -7,4 +7,4 @@ python3 train.py \
     --lr 0.001 \
     --num-workers 8 \
     --seed 42 \
-    --experiment-id "unet-training" \
+    --experiment-id "fastscnn-training-experiment-01" \
