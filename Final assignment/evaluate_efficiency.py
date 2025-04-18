@@ -80,23 +80,23 @@ def main(args):
     draft_loader = DataLoader(draft_dataset, batch_size=args.batch_size, shuffle=False, num_workers=args.num_workers)
 
     # 2. Calculate mean and std
-    mean = torch.zeros(3)
-    sum_squared = torch.zeros(3)
-    total_samples = 0
-    for images, _ in tqdm(draft_loader, desc="Calc mean/std"):
-        batch_size = images.size(0)
-        mean += images.mean(dim=[0, 2, 3]) * batch_size
-        sum_squared += (images ** 2).mean(dim=[0, 2, 3]) * batch_size
-        total_samples += batch_size
-    mean /= total_samples
-    std = torch.sqrt((sum_squared / total_samples) - mean.pow(2))
+    #mean = torch.zeros(3)
+    #sum_squared = torch.zeros(3)
+    #total_samples = 0
+    #for images, _ in tqdm(draft_loader, desc="Calc mean/std"):
+    #    batch_size = images.size(0)
+    #    mean += images.mean(dim=[0, 2, 3]) * batch_size
+    #    sum_squared += (images ** 2).mean(dim=[0, 2, 3]) * batch_size
+    #    total_samples += batch_size
+    #mean /= total_samples
+    #std = torch.sqrt((sum_squared / total_samples) - mean.pow(2))
 
     # 3. Final transform
     valid_transform = Compose([
         ToImage(),
-        Resize((image_width, image_height)),
+        Resize((image_height, image_width)),
         ToDtype(torch.float32, scale=True),
-        Normalize(mean.tolist(), std.tolist()),
+        Normalize(mean=[0.2855, 0.3228, 0.2819], std=[0.1831, 0.1864, 0.1837]),
     ])
 
     valid_dataset = Cityscapes(args.data_dir, split="val", mode="fine", target_type="semantic", transforms=valid_transform)

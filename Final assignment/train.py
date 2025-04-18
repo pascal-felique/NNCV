@@ -63,8 +63,8 @@ image_height5=512
 ###########################
 # Select image resolution
 ###########################
-image_width=image_width2
-image_height=image_height2
+image_width=image_width1
+image_height=image_height1
 
 # Function to calculate mean and standard deviation
 def calculate_mean_std(dataloader):
@@ -176,7 +176,7 @@ def main(args):
     train_transform = Compose([
     ToImage(),
     RandomHorizontalFlip(p=0.5),
-    RandomResizedCrop(size=(image_width, image_height), scale=(0.5, 2.0), ratio=(0.75, 1.33)),  # same aspect ratio as original
+    RandomResizedCrop(size=(image_height, image_width), scale=(0.5, 2.0), ratio=(0.75, 1.33)),  # same aspect ratio as original
     ColorJitter(brightness=0.3, contrast=0.3, saturation=0.3, hue=0.1),  # photometric augmentations
     ToDtype(torch.float32, scale=True),  # normalize pixel scale
     Normalize(mean.tolist(), std.tolist())  # apply mean/std normalization last
@@ -184,7 +184,7 @@ def main(args):
 
     valid_transform = Compose([
         ToImage(),
-        Resize((image_width, image_height)),
+        Resize((image_height, image_width)),
         ToDtype(torch.float32, scale=True),
         Normalize(mean.tolist(), std.tolist()),
     ])
