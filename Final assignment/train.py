@@ -14,6 +14,7 @@ Feel free to customize the script as needed for your use case.
 """
 import os
 from argparse import ArgumentParser
+from tqdm import tqdm  # Import tqdm
 
 import wandb
 import torch
@@ -28,10 +29,32 @@ from torchvision.transforms.v2 import (
     Resize,
     ToImage,
     ToDtype,
+    RandomHorizontalFlip,
+    RandomResizedCrop,
+    ColorJitter
 )
 
-from unet import UNet
+# Switch between neural network models
+#from unet import Model
+from fast_scnn import Model
 
+# Function to calculate mean and standard deviation
+def calculate_mean_std(dataloader):
+    mean = torch.zeros(3)
+    sum_squared = torch.zeros(3)
+    total_samples = 0
+
+#   for images, _ in dataloader:
+    for images, _ in tqdm(dataloader, desc="Calculating Mean and Std", dynamic_ncols=True):
+        batch_size = images.size(0)
+        # Compute sum of pixel values and sum of squared pixel values in one pass
+        mean += images.mean(dim=[0, 2, 3]) * batch_size
+        sum_squared += (images.pow(2)).mean(dim=[0, 2, 3]) * batch_size
+        total_samples += batch_size
+
+    mean /= total_samples
+    std = torch.sqrt((sum_squared / total_samples) - mean.pow(2))
+    return mean, std
 
 # Mapping class IDs to train IDs
 id_to_trainid = {cls.id: cls.train_id for cls in Cityscapes.classes}
@@ -90,13 +113,54 @@ def main(args):
     # Define the device
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-    # Define the transforms to apply to the data
-    transform = Compose([
+
+    # Define the draft transform without normalization
+    draft_transform = Compose([
         ToImage(),
-        Resize((256, 256)),
         ToDtype(torch.float32, scale=True),
-        Normalize((0.5,), (0.5,)),
     ])
+
+    # Load the draft training dataset
+    draft_train_dataset = Cityscapes(
+        args.data_dir, 
+        split="train", 
+        mode="fine", 
+        target_type="semantic", 
+        transforms=draft_transform
+    )
+
+    draft_train_dataset = wrap_dataset_for_transforms_v2(draft_train_dataset)
+
+    draft_train_dataloader = DataLoader(
+        draft_train_dataset, 
+        batch_size=args.batch_size, 
+        shuffle=True,
+        num_workers=args.num_workers
+    )
+
+    # Calculate mean and std for the draft dataset
+    mean, std = calculate_mean_std(draft_train_dataloader)
+    print(f"Mean: {mean}, Std: {std}")
+
+
+    # Define the transforms to apply to the data
+
+    train_transform = Compose([
+    ToImage(),
+    RandomHorizontalFlip(p=0.5),
+    RandomResizedCrop(size=(768, 384), scale=(0.5, 2.0), ratio=(0.75, 1.33)),  # same aspect ratio as original
+    ColorJitter(brightness=0.3, contrast=0.3, saturation=0.3, hue=0.1),  # photometric augmentations
+    ToDtype(torch.float32, scale=True),  # normalize pixel scale
+    Normalize(mean.tolist(), std.tolist())  # apply mean/std normalization last
+    ])
+
+    valid_transform = Compose([
+        ToImage(),
+        Resize((768, 384)),
+        ToDtype(torch.float32, scale=True),
+        Normalize(mean.tolist(), std.tolist()),
+    ])
+
 
     # Load the dataset and make a split for training and validation
     train_dataset = Cityscapes(
@@ -104,14 +168,14 @@ def main(args):
         split="train", 
         mode="fine", 
         target_type="semantic", 
-        transforms=transform
+        transforms=train_transform
     )
     valid_dataset = Cityscapes(
         args.data_dir, 
         split="val", 
         mode="fine", 
         target_type="semantic", 
-        transforms=transform
+        transforms=valid_transform
     )
 
     train_dataset = wrap_dataset_for_transforms_v2(train_dataset)
@@ -131,7 +195,7 @@ def main(args):
     )
 
     # Define the model
-    model = UNet(
+    model = Model(
         in_channels=3,  # RGB images
         n_classes=19,  # 19 classes in the Cityscapes dataset
     ).to(device)
