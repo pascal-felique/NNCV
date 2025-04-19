@@ -121,7 +121,7 @@ def main(args):
     model.eval()
 
     # 5. Calculate FLOPS on one image
-    dummy_input = torch.randn(1, 3, image_height, image_width).to(device)
+    dummy_input = torch.randn(1, 3, resized_image_height, resized_image_width).to(device)
     flops, _ = profile(model, inputs=(dummy_input,))
     print(f"FLOPs per image: {flops:.2e}")
 
