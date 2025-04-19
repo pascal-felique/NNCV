@@ -63,8 +63,8 @@ image_height5=512
 ###########################
 # Select image resolution
 ###########################
-image_width=image_width1
-image_height=image_height1
+image_width=image_width2
+image_height=image_height2
 
 # Function to calculate mean and standard deviation
 def calculate_mean_std(dataloader):
