@@ -92,18 +92,6 @@ def main(args):
     draft_dataset = wrap_dataset_for_transforms_v2(draft_dataset)
     draft_loader = DataLoader(draft_dataset, batch_size=args.batch_size, shuffle=False, num_workers=args.num_workers)
 
-    # Calculate mean and std
-    #mean = torch.zeros(3)
-    #sum_squared = torch.zeros(3)
-    #total_samples = 0
-    #for images, _ in tqdm(draft_loader, desc="Calc mean/std"):
-    #    batch_size = images.size(0)
-    #    mean += images.mean(dim=[0, 2, 3]) * batch_size
-    #    sum_squared += (images ** 2).mean(dim=[0, 2, 3]) * batch_size
-    #    total_samples += batch_size
-    #mean /= total_samples
-    #std = torch.sqrt((sum_squared / total_samples) - mean.pow(2))
-
     # Validation transform
     valid_transform = Compose([
         ToImage(),
