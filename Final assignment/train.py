@@ -30,7 +30,7 @@ from torchvision.transforms.v2 import (
     ToImage,
     ToDtype,
     RandomHorizontalFlip,
-    RandomResizedCrop,
+    RandomCrop,
     ColorJitter
 )
 
@@ -38,33 +38,44 @@ from torchvision.transforms.v2 import (
 #from unet import Model
 from fast_scnn import Model
 
-
-# Define image resolutions
+# Define image sizes
 # 768×384
-image_width1=768
-image_height1=384
+resized_image_width1=768
+resized_image_height1=384
+patch_width1=576
+patch_height1=288
 
 # 576×288
-image_width2=576
-image_height2=288
+resized_image_width2=576
+resized_image_height2=288
+patch_width2=448
+patch_height2=224
 
 # 2048×1024
-image_width3=2048
-image_height3=1024
+resized_image_width3=2048
+resized_image_height3=1024
+patch_width3=1536
+patch_height3=768
 
 # 1536x768
-image_width4=1536
-image_height4=768
+resized_image_width4=1536
+resized_image_height4=768
+patch_width4=1152
+patch_height4=576
 
 # 1024×512
-image_width5=1024
-image_height5=512
+resized_image_width5=1024
+resized_image_height5=512
+patch_width5=768
+patch_height5=384
 
-###########################
-# Select image resolution
-###########################
-image_width=image_width2
-image_height=image_height2
+####################################
+# Select image size and patch size
+####################################
+resized_image_width=resized_image_width1
+resized_image_height=resized_image_height1
+patch_width=patch_width1
+patch_height=patch_height1
 
 # Function to calculate mean and standard deviation
 def calculate_mean_std(dataloader):
@@ -170,25 +181,25 @@ def main(args):
     mean, std = calculate_mean_std(draft_train_dataloader)
     print(f"Mean: {mean}, Std: {std}")
 
-
     # Define the transforms to apply to the data
 
+    # Training transform (resize first, then random crop)
     train_transform = Compose([
-    ToImage(),
-    RandomHorizontalFlip(p=0.5),
-    RandomResizedCrop(size=(image_height, image_width), scale=(0.5, 2.0), ratio=(0.75, 1.33)),  # same aspect ratio as original
-    ColorJitter(brightness=0.3, contrast=0.3, saturation=0.3, hue=0.1),  # photometric augmentations
-    ToDtype(torch.float32, scale=True),  # normalize pixel scale
-    Normalize(mean.tolist(), std.tolist())  # apply mean/std normalization last
+        ToImage(),
+        RandomHorizontalFlip(p=0.5),  # Random horizontal flip for augmentation
+        Resize(size=(resized_image_height, resized_image_width)),  # Resize the image
+        RandomCrop(size=(patch_height, patch_width)),  # Random crop to the desired patch size
+        ColorJitter(brightness=0.3, contrast=0.3, saturation=0.3, hue=0.1),  # Photometric augmentations
+        ToDtype(torch.float32, scale=True),  # Normalize pixel scale
+        Normalize(mean.tolist(), std.tolist())  # Apply mean/std normalization
     ])
-
+    
     valid_transform = Compose([
         ToImage(),
-        Resize((image_height, image_width)),
+        Resize((resized_image_height, resized_image_width)),
         ToDtype(torch.float32, scale=True),
         Normalize(mean.tolist(), std.tolist()),
     ])
-
 
     # Load the dataset and make a split for training and validation
     train_dataset = Cityscapes(

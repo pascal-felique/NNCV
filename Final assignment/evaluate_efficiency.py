@@ -12,32 +12,44 @@ import numpy as np
 # Import your model
 from fast_scnn import Model
 
-# Define image resolutions
+# Define image sizes
 # 768×384
-image_width1=768
-image_height1=384
+resized_image_width1=768
+resized_image_height1=384
+patch_width1=576
+patch_height1=288
 
 # 576×288
-image_width2=576
-image_height2=288
+resized_image_width2=576
+resized_image_height2=288
+patch_width2=448
+patch_height2=224
 
 # 2048×1024
-image_width3=2048
-image_height3=1024
+resized_image_width3=2048
+resized_image_height3=1024
+patch_width3=1536
+patch_height3=768
 
 # 1536x768
-image_width4=1536
-image_height4=768
+resized_image_width4=1536
+resized_image_height4=768
+patch_width4=1152
+patch_height4=576
 
 # 1024×512
-image_width5=1024
-image_height5=512
+resized_image_width5=1024
+resized_image_height5=512
+patch_width5=768
+patch_height5=384
 
-###########################
-# Select image resolution
-###########################
-image_width=image_width1
-image_height=image_height1
+####################################
+# Select image size and patch size
+####################################
+resized_image_width=resized_image_width1
+resized_image_height=resized_image_height1
+patch_width=patch_width1
+patch_height=patch_height1
 
 # Mapping class IDs to train IDs
 id_to_trainid = {cls.id: cls.train_id for cls in Cityscapes.classes}
@@ -94,7 +106,7 @@ def main(args):
     # 3. Final transform
     valid_transform = Compose([
         ToImage(),
-        Resize((image_height, image_width)),
+        Resize((resized_image_height, resized_image_width)),
         ToDtype(torch.float32, scale=True),
         Normalize(mean=[0.2855, 0.3228, 0.2819], std=[0.1831, 0.1864, 0.1837]),
     ])
