@@ -13,35 +13,36 @@ import numpy as np
 from fast_scnn import Model
 
 # Define image sizes
-# 768×384
-resized_image_width1=768
-resized_image_height1=384
-patch_width1=576
-patch_height1=288
-
-# 576×288
-resized_image_width2=576
-resized_image_height2=288
-patch_width2=448
-patch_height2=224
 
 # 2048×1024
-resized_image_width3=2048
-resized_image_height3=1024
-patch_width3=1536
-patch_height3=768
+resized_image_width1=2048
+resized_image_height1=1024
+patch_width1=1536
+patch_height1=768
 
 # 1536x768
-resized_image_width4=1536
-resized_image_height4=768
-patch_width4=1152
-patch_height4=576
+resized_image_width2=1536
+resized_image_height2=768
+patch_width2=1152
+patch_height2=576
 
 # 1024×512
-resized_image_width5=1024
-resized_image_height5=512
-patch_width5=768
-patch_height5=384
+resized_image_width3=1024
+resized_image_height3=512
+patch_width3=768
+patch_height3=384
+
+# 768×384
+resized_image_width4=768
+resized_image_height4=384
+patch_width4=576
+patch_height4=288
+
+# 576×288
+resized_image_width5=576
+resized_image_height5=288
+patch_width5=448
+patch_height5=224
 
 ####################################
 # Select image size and patch size
@@ -82,7 +83,7 @@ def get_args_parser():
 def main(args):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-    # 1. Draft transform to calculate normalization
+    # Draft transform to calculate normalization
     draft_transform = Compose([
         ToImage(),
         ToDtype(torch.float32, scale=True),
@@ -91,7 +92,7 @@ def main(args):
     draft_dataset = wrap_dataset_for_transforms_v2(draft_dataset)
     draft_loader = DataLoader(draft_dataset, batch_size=args.batch_size, shuffle=False, num_workers=args.num_workers)
 
-    # 2. Calculate mean and std
+    # Calculate mean and std
     #mean = torch.zeros(3)
     #sum_squared = torch.zeros(3)
     #total_samples = 0
@@ -103,12 +104,12 @@ def main(args):
     #mean /= total_samples
     #std = torch.sqrt((sum_squared / total_samples) - mean.pow(2))
 
-    # 3. Final transform
+    # Validation transform
     valid_transform = Compose([
         ToImage(),
         Resize((resized_image_height, resized_image_width)),
         ToDtype(torch.float32, scale=True),
-        Normalize(mean=[0.2855, 0.3228, 0.2819], std=[0.1831, 0.1864, 0.1837]),
+        Normalize(mean=[0.2855, 0.3228, 0.2819], std=[0.1831, 0.1864, 0.1837]), # Pre-calculated values
     ])
 
     valid_dataset = Cityscapes(args.data_dir, split="val", mode="fine", target_type="semantic", transforms=valid_transform)

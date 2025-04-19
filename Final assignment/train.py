@@ -39,35 +39,36 @@ from torchvision.transforms.v2 import (
 from fast_scnn import Model
 
 # Define image sizes
-# 768×384
-resized_image_width1=768
-resized_image_height1=384
-patch_width1=576
-patch_height1=288
-
-# 576×288
-resized_image_width2=576
-resized_image_height2=288
-patch_width2=448
-patch_height2=224
 
 # 2048×1024
-resized_image_width3=2048
-resized_image_height3=1024
-patch_width3=1536
-patch_height3=768
+resized_image_width1=2048
+resized_image_height1=1024
+patch_width1=1536
+patch_height1=768
 
 # 1536x768
-resized_image_width4=1536
-resized_image_height4=768
-patch_width4=1152
-patch_height4=576
+resized_image_width2=1536
+resized_image_height2=768
+patch_width2=1152
+patch_height2=576
 
 # 1024×512
-resized_image_width5=1024
-resized_image_height5=512
-patch_width5=768
-patch_height5=384
+resized_image_width3=1024
+resized_image_height3=512
+patch_width3=768
+patch_height3=384
+
+# 768×384
+resized_image_width4=768
+resized_image_height4=384
+patch_width4=576
+patch_height4=288
+
+# 576×288
+resized_image_width5=576
+resized_image_height5=288
+patch_width5=448
+patch_height5=224
 
 ####################################
 # Select image size and patch size
@@ -183,7 +184,7 @@ def main(args):
 
     # Define the transforms to apply to the data
 
-    # Training transform (resize first, then random crop)
+    # Training transform (resize first, then random crop and jitter)
     train_transform = Compose([
         ToImage(),
         RandomHorizontalFlip(p=0.5),  # Random horizontal flip for augmentation
@@ -194,6 +195,7 @@ def main(args):
         Normalize(mean.tolist(), std.tolist())  # Apply mean/std normalization
     ])
     
+    # Validation transform (resize only)
     valid_transform = Compose([
         ToImage(),
         Resize((resized_image_height, resized_image_width)),
