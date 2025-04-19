@@ -83,15 +83,6 @@ def get_args_parser():
 def main(args):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-    # Draft transform to calculate normalization
-    draft_transform = Compose([
-        ToImage(),
-        ToDtype(torch.float32, scale=True),
-    ])
-    draft_dataset = Cityscapes(args.data_dir, split="train", mode="fine", target_type="semantic", transforms=draft_transform)
-    draft_dataset = wrap_dataset_for_transforms_v2(draft_dataset)
-    draft_loader = DataLoader(draft_dataset, batch_size=args.batch_size, shuffle=False, num_workers=args.num_workers)
-
     # Validation transform
     valid_transform = Compose([
         ToImage(),
