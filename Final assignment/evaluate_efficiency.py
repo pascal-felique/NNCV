@@ -14,17 +14,17 @@ from fast_scnn import Model
 
 # Define image sizes
 
-# 2048×1024
-resized_image_width1=2048
-resized_image_height1=1024
-patch_width1=1536
-patch_height1=768
+# 576×288
+resized_image_width1=576
+resized_image_height1=288
+patch_width1=448
+patch_height1=224
 
-# 1536x768
-resized_image_width2=1536
-resized_image_height2=768
-patch_width2=1152
-patch_height2=576
+# 768×384
+resized_image_width2=768
+resized_image_height2=384
+patch_width2=576
+patch_height2=288
 
 # 1024×512
 resized_image_width3=1024
@@ -32,17 +32,17 @@ resized_image_height3=512
 patch_width3=768
 patch_height3=384
 
-# 768×384
-resized_image_width4=768
-resized_image_height4=384
-patch_width4=576
-patch_height4=288
+# 1536x768
+resized_image_width4=1536
+resized_image_height4=768
+patch_width4=1152
+patch_height4=576
 
-# 576×288
-resized_image_width5=576
-resized_image_height5=288
-patch_width5=448
-patch_height5=224
+# 2048×1024
+resized_image_width5=2048
+resized_image_height5=1024
+patch_width5=1536
+patch_height5=768
 
 ####################################
 # Select image size and patch size

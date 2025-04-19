@@ -40,17 +40,17 @@ from fast_scnn import Model
 
 # Define image sizes
 
-# 2048×1024
-resized_image_width1=2048
-resized_image_height1=1024
-patch_width1=1536
-patch_height1=768
+# 576×288
+resized_image_width1=576
+resized_image_height1=288
+patch_width1=448
+patch_height1=224
 
-# 1536x768
-resized_image_width2=1536
-resized_image_height2=768
-patch_width2=1152
-patch_height2=576
+# 768×384
+resized_image_width2=768
+resized_image_height2=384
+patch_width2=576
+patch_height2=288
 
 # 1024×512
 resized_image_width3=1024
@@ -58,17 +58,17 @@ resized_image_height3=512
 patch_width3=768
 patch_height3=384
 
-# 768×384
-resized_image_width4=768
-resized_image_height4=384
-patch_width4=576
-patch_height4=288
+# 1536x768
+resized_image_width4=1536
+resized_image_height4=768
+patch_width4=1152
+patch_height4=576
 
-# 576×288
-resized_image_width5=576
-resized_image_height5=288
-patch_width5=448
-patch_height5=224
+# 2048×1024
+resized_image_width5=2048
+resized_image_height5=1024
+patch_width5=1536
+patch_height5=768
 
 ####################################
 # Select image size and patch size
@@ -128,6 +128,7 @@ def get_args_parser():
     parser.add_argument("--num-workers", type=int, default=10, help="Number of workers for data loaders")
     parser.add_argument("--seed", type=int, default=42, help="Random seed for reproducibility")
     parser.add_argument("--experiment-id", type=str, default="unet-training", help="Experiment ID for Weights & Biases")
+    parser.add_argument("--model-path", type=str, required=True, help="Path to trained model .pth file")
 
     return parser
 
@@ -240,6 +241,13 @@ def main(args):
         in_channels=3,  # RGB images
         n_classes=19,  # 19 classes in the Cityscapes dataset
     ).to(device)
+
+    # Load weights and biases from previous run if model_path is different from none
+    if args.model_path != "none":
+        model.load_state_dict(torch.load(args.model_path, map_location=device))
+        print("Load weights and biases from previous run")
+    else:
+        print("Start training from scratch with random weights and biases")
 
     # Define the loss function
     criterion = nn.CrossEntropyLoss(ignore_index=255)  # Ignore the void class
