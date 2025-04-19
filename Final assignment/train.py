@@ -80,20 +80,25 @@ patch_height=patch_height1
 
 # Function to calculate mean and standard deviation
 def calculate_mean_std(dataloader):
-    mean = torch.zeros(3)
-    sum_squared = torch.zeros(3)
-    total_samples = 0
+    mean = torch.zeros(3)  # For 3 channels (RGB)
+    sum_squared = torch.zeros(3)  # To accumulate squared pixel values
+    total_pixels = 0  # Total number of pixels in the dataset
 
-#   for images, _ in dataloader:
+    # Iterate through the data loader to accumulate values
     for images, _ in tqdm(dataloader, desc="Calculating Mean and Std", dynamic_ncols=True):
-        batch_size = images.size(0)
-        # Compute sum of pixel values and sum of squared pixel values in one pass
-        mean += images.mean(dim=[0, 2, 3]) * batch_size
-        sum_squared += (images.pow(2)).mean(dim=[0, 2, 3]) * batch_size
-        total_samples += batch_size
+        b, c, h, w = images.shape  # Batch size, channels, height, width
+        num_pixels = b * h * w  # Total pixels in this batch
 
-    mean /= total_samples
-    std = torch.sqrt((sum_squared / total_samples) - mean.pow(2))
+        # Accumulate sum of pixel values for each channel
+        mean += images.sum(dim=[0, 2, 3])
+        # Accumulate sum of squared pixel values for each channel
+        sum_squared += (images ** 2).sum(dim=[0, 2, 3])
+        total_pixels += num_pixels  # Update total pixel count
+
+    # Finalize the mean and std by dividing by the total number of pixels
+    mean /= total_pixels
+    std = torch.sqrt((sum_squared / total_pixels) - mean ** 2)  # Standard deviation formula
+
     return mean, std
 
 # Mapping class IDs to train IDs
