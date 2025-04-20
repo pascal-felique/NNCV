@@ -7,5 +7,5 @@ python3 train.py \
     --lr 0.001 \
     --num-workers 8 \
     --seed 42 \
-    --experiment-id "fastscnn-training-experiment-01" \
-    --model-path "none" \
+    --experiment-id "fastscnn-training-experiment-02" \
+    --model-path "./models/fastscnn-training-experiment-01.pth" \
