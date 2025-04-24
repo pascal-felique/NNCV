@@ -133,7 +133,7 @@ def get_args_parser():
     parser.add_argument("--num-workers", type=int, default=10, help="Number of workers for data loaders")
     parser.add_argument("--seed", type=int, default=42, help="Random seed for reproducibility")
     parser.add_argument("--experiment-id", type=str, default="unet-training", help="Experiment ID for Weights & Biases")
-    parser.add_argument("--model-path", type=str, required=True, help="Path to trained model .pth file")
+    parser.add_argument("--previous-model-path", type=str, required=True, help="Path to previous trained model .pth file")
 
     return parser
 
@@ -248,8 +248,8 @@ def main(args):
     ).to(device)
 
     # Load weights and biases from previous run if model_path is different from none
-    if args.model_path != "none":
-        model.load_state_dict(torch.load(args.model_path, map_location=device))
+    if args.previous_model_path != "none":
+        model.load_state_dict(torch.load(args.previous_model_path, map_location=device))
         print("Load weights and biases from previous run")
     else:
         print("Start training from scratch with random weights and biases")

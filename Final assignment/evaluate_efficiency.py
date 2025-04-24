@@ -77,7 +77,7 @@ def get_args_parser():
     parser.add_argument("--data-dir", type=str, default="./data/cityscapes", help="Path to Cityscapes dataset")
     parser.add_argument("--batch-size", type=int, default=8)
     parser.add_argument("--num-workers", type=int, default=4)
-    parser.add_argument("--model-path", type=str, required=True, help="Path to trained model .pth file")
+    parser.add_argument("--current-model-path", type=str, required=True, help="Path to trained model .pth file")
     return parser
 
 def main(args):
@@ -97,7 +97,7 @@ def main(args):
 
     # 4. Load model
     model = Model(in_channels=3, n_classes=19).to(device)
-    model.load_state_dict(torch.load(args.model_path, map_location=device))
+    model.load_state_dict(torch.load(args.current_model_path, map_location=device))
     model.eval()
 
     # 5. Calculate FLOPS on one image
