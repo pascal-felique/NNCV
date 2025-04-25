@@ -9,6 +9,6 @@ python3 train_distillation.py \
     --seed 42 \
     --experiment-id "fastscnn-training-experiment-12" \
     --trained-teacher-model-path "./models/fastscnn-training-experiment-05.pth" \
-    --previous-student-model-path "fastscnn-training-experiment-11.pth" \
+    --previous-student-model-path "./models/fastscnn-training-experiment-11.pth" \
     --alpha 0.5 \
     --temperature 4.0 \
