@@ -74,10 +74,10 @@ patch_height5=768
 ####################################
 # Select image size and patch size
 ####################################
-resized_image_width=resized_image_width1
-resized_image_height=resized_image_height1
-patch_width=patch_width1
-patch_height=patch_height1
+resized_image_width=resized_image_width2
+resized_image_height=resized_image_height2
+patch_width=patch_width2
+patch_height=patch_height2
 
 def distillation_loss(student_logits, teacher_logits, labels, T, alpha):
     kd_loss = F.kl_div(

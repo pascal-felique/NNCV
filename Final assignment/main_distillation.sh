@@ -7,8 +7,8 @@ python3 train_distillation.py \
     --lr 0.001 \
     --num-workers 8 \
     --seed 42 \
-    --experiment-id "fastscnn-training-experiment-11" \
+    --experiment-id "fastscnn-training-experiment-12" \
     --trained-teacher-model-path "./models/fastscnn-training-experiment-05.pth" \
-    --previous-student-model-path "none" \
+    --previous-student-model-path "fastscnn-training-experiment-11" \
     --alpha 0.5 \
     --temperature 4.0 \
