@@ -57,20 +57,28 @@ id_to_trainid = {cls.id: cls.train_id for cls in Cityscapes.classes}
 def convert_to_train_id(label_img: torch.Tensor) -> torch.Tensor:
     return label_img.apply_(lambda x: id_to_trainid[x])
 
-# Dice score function
-def dice_score(pred, target, num_classes=19, ignore_index=255):
-    dice = []
-    for cls in range(num_classes):
-        if cls == ignore_index:
-            continue
-        pred_inds = (pred == cls)
-        target_inds = (target == cls)
-        intersection = (pred_inds & target_inds).sum().item()
-        union = pred_inds.sum().item() + target_inds.sum().item()
-        if union == 0:
-            continue
-        dice.append((2. * intersection) / union)
-    return np.mean(dice) if dice else 0.0
+# Mean Dice score over dataset
+def compute_mean_dice_over_dataset(preds, targets, num_classes=19, ignore_index=255):
+    total_inter = torch.zeros(num_classes)
+    total_union = torch.zeros(num_classes)
+
+    for pred, target in zip(preds, targets):
+        mask = (target != ignore_index)
+        pred = pred[mask]
+        target = target[mask]
+
+        for cls in range(num_classes):
+            pred_inds = (pred == cls)
+            target_inds = (target == cls)
+            inter = (pred_inds & target_inds).sum().item()
+            union = pred_inds.sum().item() + target_inds.sum().item()
+            total_inter[cls] += inter
+            total_union[cls] += union
+
+    dice_scores = (2.0 * total_inter) / (total_union + 1e-6)  # avoid division by zero
+    valid = total_union > 0
+    return dice_scores[valid].mean().item() if valid.any() else 0.0
+
 
 def get_args_parser():
     parser = ArgumentParser("Inference and Efficiency Eval")
@@ -106,7 +114,9 @@ def main(args):
     print(f"FLOPs per image: {flops:.2e}")
 
     # 6. Inference and Dice score
-    dice_scores = []
+    all_preds = []
+    all_targets = []
+
     with torch.no_grad():
         for images, targets in tqdm(valid_loader, desc="Running inference"):
             images = images.to(device)
@@ -115,10 +125,11 @@ def main(args):
             outputs = model(images)
             preds = torch.argmax(outputs, dim=1)
 
-            for p, t in zip(preds, targets):
-                dice_scores.append(dice_score(p.cpu(), t.cpu()))
+            all_preds.extend(preds.cpu())
+            all_targets.extend(targets.cpu())
 
-    mean_dice = np.mean(dice_scores)
+    mean_dice = compute_mean_dice_over_dataset(all_preds, all_targets)
+
     efficiency = mean_dice / flops
     print(f"Mean Dice Score: {mean_dice:.4f}")
     print(f"Efficiency (Dice / FLOPs): {efficiency:.6e}")
