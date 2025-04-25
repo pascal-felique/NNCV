@@ -1,6 +1,6 @@
 wandb login
 
-python3 train.py \
+python3 train_distillation.py \
     --data-dir "./data/cityscapes" \
     --batch-size 32 \
     --epochs 100 \
