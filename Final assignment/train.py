@@ -73,10 +73,10 @@ patch_height5=768
 ####################################
 # Select image size and patch size
 ####################################
-resized_image_width=resized_image_width5
-resized_image_height=resized_image_height5
-patch_width=patch_width5
-patch_height=patch_height5
+resized_image_width=resized_image_width1
+resized_image_height=resized_image_height1
+patch_width=patch_width1
+patch_height=patch_height1
 
 # Function to calculate mean and standard deviation
 def calculate_mean_std(dataloader):
@@ -125,14 +125,14 @@ def convert_train_id_to_color(prediction: torch.Tensor) -> torch.Tensor:
 
 def get_args_parser():
 
-    parser = ArgumentParser("Training script for a PyTorch U-Net model")
+    parser = ArgumentParser("Training script for a PyTorch model")
     parser.add_argument("--data-dir", type=str, default="./data/cityscapes", help="Path to the training data")
     parser.add_argument("--batch-size", type=int, default=64, help="Training batch size")
     parser.add_argument("--epochs", type=int, default=10, help="Number of training epochs")
     parser.add_argument("--lr", type=float, default=0.001, help="Learning rate")
     parser.add_argument("--num-workers", type=int, default=10, help="Number of workers for data loaders")
     parser.add_argument("--seed", type=int, default=42, help="Random seed for reproducibility")
-    parser.add_argument("--experiment-id", type=str, default="unet-training", help="Experiment ID for Weights & Biases")
+    parser.add_argument("--experiment-id", type=str, default="model-training", help="Experiment ID for Weights & Biases")
     parser.add_argument("--previous-model-path", type=str, required=True, help="Path to previous trained model .pth file")
 
     return parser
@@ -247,7 +247,7 @@ def main(args):
         n_classes=19,  # 19 classes in the Cityscapes dataset
     ).to(device)
 
-    # Load weights and biases from previous run if model_path is different from none
+    # Load weights and biases from previous run if model path is different from none
     if args.previous_model_path != "none":
         model.load_state_dict(torch.load(args.previous_model_path, map_location=device))
         print("Load weights and biases from previous run")
