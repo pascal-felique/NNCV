@@ -83,6 +83,8 @@ If you start the training at the initial lowest resolution, then you have to spe
 
 You have to provide the location of the trained Teacher model (who has learned the entire curriculum already).
 
+The same trained Teacher model will be used during the entire curriculum of the Student.
+
 - **train_distillation.py**:
 
 You have to make sure that the resized image dimensions and patch dimensions point to the resolution of the current curriculum:
