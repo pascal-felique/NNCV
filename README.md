@@ -101,7 +101,7 @@ You can choose between 5 profiles from low resolution, to medium resolution, hig
 
 To follow the curriculum correctly during Curriculum Learning, you have to increase the resolution in each stage.
 
-Each time you advance in the curriculum, you have update the location of the previous trained Student model which was trained at a lower resolution.
+Each time you advance in the curriculum, you have to update the location of the previous trained Student model which was trained at a lower resolution.
 
 The same trained Teacher model will be used during the entire curriculum of the Student.
 
