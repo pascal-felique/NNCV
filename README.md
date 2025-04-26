@@ -4,6 +4,10 @@ We have used the Fast-SCNN model architecture for training semantic segmentation
 
 This repository contains the modifications and training scripts that were used for training the models.
 
+The trained models and slurm job outputs are provided as well.
+
+There are several Excel sheets with calculations and measurements.
+
 ## Overview
 
 We have modified and integrated the code of the Fast-SCNN model architecture to make it compatible with the existing training script.
