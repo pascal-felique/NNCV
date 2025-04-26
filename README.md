@@ -10,7 +10,7 @@ There are several Excel sheets with calculations and measurements.
 
 ## Overview
 
-We have modified and integrated the code of the Fast-SCNN model architecture to make it compatible with the existing training script.
+We have modified and integrated the code of the Fast-SCNN model architecture to make it compatible with the existing training framework.
 
 We have made 2 versions of the training script: perform training with Curriculum Learning or perform training with Curriculum Learning and Knowledge Distillation.
 
