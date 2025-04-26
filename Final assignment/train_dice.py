@@ -81,7 +81,9 @@ patch_height=patch_height1
 
 def dice_loss(predictions, targets, epsilon=1e-6):
     predictions = torch.softmax(predictions, dim=1)
+    
     targets_one_hot = F.one_hot(targets, num_classes=predictions.shape[1]).permute(0, 3, 1, 2).float()
+    targets_one_hot = targets_one_hot * (targets != 255).unsqueeze(1).float()  # Mask out ignored labels
 
     intersection = (predictions * targets_one_hot).sum(dim=(2, 3))
     union = predictions.sum(dim=(2, 3)) + targets_one_hot.sum(dim=(2, 3))
