@@ -43,7 +43,7 @@ But we found an unofficial implementation on GitHub from an AI researcher at Bai
 
 This implementation adopts all the main principles from the Fast-SCNN model architecture.
 
-Slight changes were made to integrate this model in the existing training framework.
+We had to make only slight changes to integrate this model in the existing training framework.
 
 ### Training with Curriculum Learning (Train a Teacher model)
 
