@@ -49,7 +49,7 @@ Two files need to be modified before starting to train with Curriculum Learning:
 
 - **main.sh**:
 
-You have to update the new experiment id and provide the location of the previous trained Teacher model at a lower resolution.
+You have to update the new experiment id and provide the location of the previous trained Teacher model which was trained at a lower resolution.
 
 The choice for the experiment id and the previous trained Teacher model depends on the stage in which you are during the curriculum.
 
@@ -71,7 +71,7 @@ Two files need to be modified before starting to train with Curriculum Learning 
 
 - **main_distillation.sh**:
 
-You have to update the new experiment id and provide the location of the previous trained Student model at a lower resolution.
+You have to update the new experiment id and provide the location of the previous trained Student model which was trained at a lower resolution.
 
 The choice for the experiment id and the previous trained Student model depends on the stage in which you are during the curriculum.
 
