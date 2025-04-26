@@ -25,7 +25,7 @@ The outputs of the slurm jobs that were run for training the models are availabl
 
 We have provided an Excel sheet with the choice of resolutions for images and patches that are used during Curriculum Learning.
 
-There is an Excel sheet with the durations of the simulations to indicate that training becomes more difficult during the curriculum.
+There is an Excel sheet with the durations of the simulations to indicate that the training becomes more difficult when moving further through the curriculum stages.
 
 And finally, there is an Excel sheet with the efficiency measurements for the different trained models.
 
@@ -41,6 +41,8 @@ But we found an unofficial implementation on GitHub from an AI researcher at Bai
 
 This implementation adopts all the main principles from the Fast-SCNN model architecture.
 
+Slight changes were made to integrate this model in the existing training framework.
+
 ### Training with Curriculum Learning (Train a Teacher model)
 
 Two files need to be modified before starting to train with Curriculum Learning:
@@ -49,11 +51,14 @@ Two files need to be modified before starting to train with Curriculum Learning:
 
 You have to update the new experiment id and provide the location of the previous trained Teacher model at a lower resolution.
 
-If you start the training at the lowest resolution, then you have to specify "none" for the previous trained Teacher model.
+The experiment id and the previous trained Teacher model depends on the stage in which you are during the curriculum.
+
+If you start the training at the initial lowest resolution, then you have to specify "none" for the previous trained Teacher model.
 
 - **train.py**:
 
 You have to make sure that the resized image dimensions and patch dimensions point to the resolution of the current curriculum:
+
 resized_image_width, resized_image_height, patch_width, patch_height
 
 You can choose between 5 profiles: from low resolution, to medium resolution, high resolution, higher resolution and highest resolution.
@@ -68,13 +73,16 @@ Two files need to be modified before starting to train with Curriculum Learning 
 
 You have to update the new experiment id and provide the location of the previous trained Student model at a lower resolution.
 
-If you start the training at the lowest resolution, then you have to specify "none" for the previous trained Student model.
+The experiment id and the previous trained Student model depends on the stage in which you are during the curriculum.
+
+If you start the training at the initial lowest resolution, then you have to specify "none" for the previous trained Student model.
 
 You also have to provide the location of the available trained Teacher model (who has learned the entire curriculum already).
 
 - **train_distillation.py**:
 
 You have to make sure that the resized image dimensions and patch dimensions point to the resolution of the current curriculum:
+
 resized_image_width, resized_image_height, patch_width, patch_height
 
 You can choose between 5 profiles from low resolution, to medium resolution, high resolution, higher resolution and highest resolution.
@@ -99,30 +107,14 @@ This is the slurm job script to launch the training with Curriculum Learning and
 
 - **evaluate_efficiency.sh**:
 
-You have to update the new experiment id and provide the location of the previous trained Student model at a lower resolution.
-
-If you start the training at the lowest resolution, then you have to specify "none" for the previous trained Student model.
-
-You also have to provide the location of the available trained Teacher model (who has learned the entire curriculum already).
-
-- **train_distillation.py**:
-
-You have to make sure that the resized image dimensions and patch dimensions point to the resolution of the current curriculum:
-resized_image_width, resized_image_height, patch_width, patch_height
-
-You can choose between 5 profiles from low resolution, to medium resolution, high resolution, higher resolution and highest resolution.
-
-To follow the curriculum correctly during Curriculum Learning, you have to increase the resolution in each training run.
-
-You have to update the location of the previous trained Student model at a lower resolution.
-
-You keep the same available trained Teacher model during the entire curriculum.
+You have to copy the trained model that you want to evaluate in the models folder to the file model.pth in the same folder.
 
 ### Trained models
 
 - **models/**:
 
 This folder containes the trained models:
+
 Models 1-5 belong to Curriculum Learning run 1 (no weight decay during training)
 Models 6-10 belong to Curriculum Learning run 2 (weight decay during training)
 Models 11-15 belong to Curriculum Learning and Knowledge Distillation run 1 (no weight decay during training)
@@ -133,6 +125,7 @@ Models 16-20 belong to Curriculum Learning and Knowledge Distillation run 2 (wei
 - **slurms/**:
 
 This folder contains the outputs of the slurm jobs that were run for training the models are available in the slurms folder:
+
 Outputs 1-5 belong to Curriculum Learning run 1 (no weight decay during training)
 Outputs 6-10 belong to Curriculum Learning run 2 (weight decay during training)
 Outputs 11-15 belong to Curriculum Learning and Knowledge Distillation run 1 (no weight decay during training)
