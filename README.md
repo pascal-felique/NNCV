@@ -1,6 +1,6 @@
 # 5LSM0: Neural Networks for Computer Vision
 
-We have used the Fast-SCNN model architecture for training semantic segmenation on the Cityscapes dataset.
+We have used the Fast-SCNN model architecture for training semantic segmentation on the Cityscapes dataset.
 
 This repository contains the modifications and training scripts that were used for training the models.
 
