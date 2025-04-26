@@ -161,19 +161,19 @@ Outputs 16-20 belong to Curriculum Learning and Knowledge Distillation run 2 (we
 
 ### Resolutions for images and patches used in the curriculum
 
-- **01. Resolutions for Images and Patches.xlsx**:
+- **Resolutions for Images and Patches.xlsx**:
 
 This is an Excel sheet with the choice of resolutions for images and patches that are used during Curriculum Learning.
 
 ### Durations of simulations
 
-- **02. Durations for Simulations.xlsx**:
+- **Durations for Simulations.xlsx**:
 
 This is an Excel sheet with the durations of the simulations to indicate that training becomes more difficult during the curriculum.
 
 ### Efficiency of trained models
 
-- **03. Evaluation of Efficiency on Validation Dataset.xlsx**:
+- **Evaluation of Efficiency on Validation Dataset.xlsx**:
 
 This is an Excel sheet with the efficiency measurements for the different trained models.
 
