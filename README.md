@@ -169,7 +169,7 @@ This is an Excel sheet with the choice of resolutions for images and patches tha
 
 - **Durations for Simulations.xlsx**:
 
-This is an Excel sheet with the durations of the simulations to indicate that training becomes more difficult during the curriculum.
+This is an Excel sheet with the durations of the simulations to indicate that training becomes more difficult when moving further through the curriculum.
 
 ### Efficiency of trained models
 
