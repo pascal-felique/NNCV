@@ -182,32 +182,32 @@ def main(args):
 
 
     # Define the draft transform without normalization
-    draft_transform = Compose([
-        ToImage(),
-        ToDtype(torch.float32, scale=True),
-    ])
+    #draft_transform = Compose([
+    #    ToImage(),
+    #    ToDtype(torch.float32, scale=True),
+    #])
 
     # Load the draft training dataset
-    draft_train_dataset = Cityscapes(
-        args.data_dir, 
-        split="train", 
-        mode="fine", 
-        target_type="semantic", 
-        transforms=draft_transform
-    )
+    #draft_train_dataset = Cityscapes(
+    #    args.data_dir, 
+    #    split="train", 
+    #    mode="fine", 
+    #    target_type="semantic", 
+    #    transforms=draft_transform
+    #)
 
-    draft_train_dataset = wrap_dataset_for_transforms_v2(draft_train_dataset)
+    #draft_train_dataset = wrap_dataset_for_transforms_v2(draft_train_dataset)
 
-    draft_train_dataloader = DataLoader(
-        draft_train_dataset, 
-        batch_size=args.batch_size, 
-        shuffle=True,
-        num_workers=args.num_workers
-    )
+    #draft_train_dataloader = DataLoader(
+    #    draft_train_dataset, 
+    #    batch_size=args.batch_size, 
+    #    shuffle=True,
+    #    num_workers=args.num_workers
+    #)
 
     # Calculate mean and std for the draft dataset
-    mean, std = calculate_mean_std(draft_train_dataloader)
-    print(f"Mean: {mean}, Std: {std}")
+    #mean, std = calculate_mean_std(draft_train_dataloader)
+    #print(f"Mean: {mean}, Std: {std}")
 
     # Define the transforms to apply to the data
 
@@ -219,7 +219,8 @@ def main(args):
         RandomCrop(size=(patch_height, patch_width)),  # Random crop to the desired patch size
         ColorJitter(brightness=0.3, contrast=0.3, saturation=0.3, hue=0.1),  # Photometric augmentations
         ToDtype(torch.float32, scale=True),  # Normalize pixel scale
-        Normalize(mean.tolist(), std.tolist())  # Apply mean/std normalization
+        #Normalize(mean.tolist(), std.tolist())  # Apply mean/std normalization
+        Normalize(mean=[0.2855, 0.3228, 0.2819], std=[0.1831, 0.1864, 0.1837]), # Pre-calculated values
     ])
     
     # Validation transform (resize only)
@@ -227,7 +228,8 @@ def main(args):
         ToImage(),
         Resize((resized_image_height, resized_image_width)),
         ToDtype(torch.float32, scale=True),
-        Normalize(mean.tolist(), std.tolist()),
+        #Normalize(mean.tolist(), std.tolist()),
+        Normalize(mean=[0.2855, 0.3228, 0.2819], std=[0.1831, 0.1864, 0.1837]), # Pre-calculated values
     ])
 
     # Load the dataset and make a split for training and validation
