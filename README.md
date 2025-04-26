@@ -138,8 +138,10 @@ Models 1-5 belong to Curriculum Learning run 1 (no weight decay during training)
 Models 6-10 belong to Curriculum Learning run 2 (weight decay during training)
 
 Models 11-15 belong to Curriculum Learning and Knowledge Distillation run 1 (no weight decay during training)
+The trained Teacher model always belongs to Model 5 which corresponds to the Teacher that completed the entire curriculum.
 
 Models 16-20 belong to Curriculum Learning and Knowledge Distillation run 2 (weight decay during training)
+The trained Teacher model always belongs to Model 10 which corresponds to the Teacher that completed the entire curriculum.
 
 ### Slurm job outputs
 
