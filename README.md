@@ -65,7 +65,7 @@ resized_image_width, resized_image_height, patch_width, patch_height
 
 You can choose between 5 profiles: from low resolution, to medium resolution, high resolution, higher resolution and highest resolution.
 
-To follow the curriculum correctly during Curriculum Learning, you have to increase the resolution in each training run. And each time, you have to update the location of the previous trained Teacher model which was trained at a lower resolution.
+To follow the curriculum correctly during Curriculum Learning, you have to increase the resolution in each stage. And each time, you have to update the location of the previous trained Teacher model which was trained at a lower resolution.
 
 ### Training with Curriculum Learning and Knowledge Distillation (Train a Student model)
 
@@ -89,7 +89,7 @@ resized_image_width, resized_image_height, patch_width, patch_height
 
 You can choose between 5 profiles from low resolution, to medium resolution, high resolution, higher resolution and highest resolution.
 
-To follow the curriculum correctly during Curriculum Learning, you have to increase the resolution in each training run. And each time, you have update the location of the previous trained Student model which was trained at a lower resolution.
+To follow the curriculum correctly during Curriculum Learning, you have to increase the resolution in each stage. And each time, you have update the location of the previous trained Student model which was trained at a lower resolution.
 
 You keep the same available trained Teacher model during the entire curriculum.
 
