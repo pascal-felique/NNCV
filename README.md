@@ -134,8 +134,11 @@ resized_image_width, resized_image_height
 This folder containes the trained models:
 
 Models 1-5 belong to Curriculum Learning run 1 (no weight decay during training)
+
 Models 6-10 belong to Curriculum Learning run 2 (weight decay during training)
+
 Models 11-15 belong to Curriculum Learning and Knowledge Distillation run 1 (no weight decay during training)
+
 Models 16-20 belong to Curriculum Learning and Knowledge Distillation run 2 (weight decay during training)
 
 ### Slurm job outputs
@@ -145,8 +148,11 @@ Models 16-20 belong to Curriculum Learning and Knowledge Distillation run 2 (wei
 This folder contains the outputs of the slurm jobs that were run for training the models are available in the slurms folder:
 
 Outputs 1-5 belong to Curriculum Learning run 1 (no weight decay during training)
+
 Outputs 6-10 belong to Curriculum Learning run 2 (weight decay during training)
+
 Outputs 11-15 belong to Curriculum Learning and Knowledge Distillation run 1 (no weight decay during training)
+
 Outputs 16-20 belong to Curriculum Learning and Knowledge Distillation run 2 (weight decay during training)
 
 ### Resolutions for images and patches used in the curriculum
