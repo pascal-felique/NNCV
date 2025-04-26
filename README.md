@@ -117,6 +117,10 @@ This is the slurm job script to launch the training with Curriculum Learning and
 
 You have to copy the trained model that you want to evaluate in the models folder to the file model.pth in the same folder.
 
+You have to make sure that the resized image dimensions point to the resolution on which the model has been trained:
+
+resized_image_width, resized_image_height
+
 ### Trained models
 
 - **models/**:
