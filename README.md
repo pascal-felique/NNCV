@@ -1,6 +1,7 @@
 # 5LSM0: Neural Networks for Computer Vision
 
 We have used the Fast-SCNN model architecture for training semantic segmenation on the Cityscapes dataset.
+
 This repository contains the modifications and training scripts that were used for training the models.
 
 ## Overview
@@ -21,11 +22,13 @@ Fast-SCNN is a lightweight and efficient model architecture designed for real-ti
 
 We could not find the official implementation of the Fast-SCNN model architecture from the researchers at Toshiba Research Europe and Cambridge University.
 
-But we found an unofficial implementation on GitHub from an AI researcher at Baidu. This implementation adopts all the main principles from the Fast-SCNN model architecture
+But we found an unofficial implementation on GitHub from an AI researcher at Baidu.
+
+This implementation adopts all the main principles from the Fast-SCNN model architecture.
 
 ### Training with Curriculum Learning (Train a Teacher model)
 
-Two files need to be modified before starting to train with Curriculum Learning.
+Two files need to be modified before starting to train with Curriculum Learning:
 
 - **main.sh**:
 
@@ -44,24 +47,27 @@ You have to update the location of the previous trained Teacher model at a lower
 
 ### Training with Curriculum Learning and Knowledge Distillation (Train a Student model)
 
-Two files need to be modified before starting to train with Curriculum Learning and Knowledge Distillation.
+Two files need to be modified before starting to train with Curriculum Learning and Knowledge Distillation:
 
 - **main_distillation.sh**:
 
 You have to update the new experiment id and provide the location of the previous trained Student model at a lower resolution.
+
 If you start the training at the lowest resolution, then you have to specify "none" for the previous trained Student model.
 
 You also have to provide the location of the available trained Teacher model (who has learned the entire curriculum already).
 
 - **train_distillation.py**:
 
-You have to make sure that the resized image dimensions and patch dimensions point to the resolution of the current curriculum
+You have to make sure that the resized image dimensions and patch dimensions point to the resolution of the current curriculum:
 resized_image_width, resized_image_height, patch_width, patch_height
 
 You can choose between 5 profiles from low resolution, to medium resolution, high resolution, higher resolution and highest resolution.
 
 To follow the curriculum correctly during Curriculum Learning, you have to increase the resolution in each training run.
+
 You have to update the location of the previous trained Student model at a lower resolution.
+
 You keep the same available trained Teacher model during the entire curriculum.
 
 ### Slurm job scripts to start training
@@ -81,17 +87,20 @@ This is the slurm job script to launch the training with Curriculum Learning and
 - **evaluate_efficiency.sh**:
 
 You have to update the new experiment id and provide the location of the previous trained Student model at a lower resolution.
+
 If you start the training at the lowest resolution, then you have to specify "none" for the previous trained Student model.
 
 You also have to provide the location of the available trained Teacher model (who has learned the entire curriculum already).
 
 - **train_distillation.py**:
 
-You have to make sure that the resized image dimensions and patch dimensions point to the resolution of the current curriculum
+You have to make sure that the resized image dimensions and patch dimensions point to the resolution of the current curriculum:
 resized_image_width, resized_image_height, patch_width, patch_height
 
 You can choose between 5 profiles from low resolution, to medium resolution, high resolution, higher resolution and highest resolution.
 
 To follow the curriculum correctly during Curriculum Learning, you have to increase the resolution in each training run.
+
 You have to update the location of the previous trained Student model at a lower resolution.
+
 You keep the same available trained Teacher model during the entire curriculum.
