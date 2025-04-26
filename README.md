@@ -101,7 +101,7 @@ The same trained Teacher model will be used during the entire curriculum of the 
 
 ### Slurm job scripts to start training
 
-There are two different slurm job scripts to either train with Curriculum Learning or Curriculum Learning with Knowledge Distillation.
+There are two different slurm job scripts to either train with Curriculum Learning or train with Curriculum Learning and Knowledge Distillation.
 
  **jobscript_slurm.sh**:
 
