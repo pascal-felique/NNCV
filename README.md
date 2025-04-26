@@ -25,7 +25,7 @@ The outputs of the slurm jobs that were run for training the models are availabl
 
 We have provided an Excel sheet with the choice of resolutions for images and patches that are used during Curriculum Learning.
 
-There is an Excel sheet with the durations of the simulations to indicate that the training becomes more difficult when moving further through the curriculum stages.
+There is an Excel sheet with the durations of the simulations to indicate that the training becomes more difficult when moving further through the curriculum.
 
 And finally, there is an Excel sheet with the efficiency measurements for the different trained models.
 
@@ -51,7 +51,7 @@ Two files need to be modified before starting to train with Curriculum Learning:
 
 You have to update the new experiment id and provide the location of the previous trained Teacher model at a lower resolution.
 
-The experiment id and the previous trained Teacher model depends on the stage in which you are during the curriculum.
+The choice for the experiment id and the previous trained Teacher model depends on the stage in which you are during the curriculum.
 
 If you start the training at the initial lowest resolution, then you have to specify "none" for the previous trained Teacher model.
 
@@ -73,7 +73,7 @@ Two files need to be modified before starting to train with Curriculum Learning 
 
 You have to update the new experiment id and provide the location of the previous trained Student model at a lower resolution.
 
-The experiment id and the previous trained Student model depends on the stage in which you are during the curriculum.
+The choice for the experiment id and the previous trained Student model depends on the stage in which you are during the curriculum.
 
 If you start the training at the initial lowest resolution, then you have to specify "none" for the previous trained Student model.
 
