@@ -80,18 +80,31 @@ patch_width=patch_width1
 patch_height=patch_height1
 
 def dice_loss(predictions, targets, epsilon=1e-6):
-    predictions = torch.softmax(predictions, dim=1)
+    """
+    Computes the Dice loss between the predicted and target tensors.
+    Assumes that the target tensor contains values in the range [0, n_classes-1].
+    The Dice loss also ignores the label `255` (void class).
+    """
+    predictions = torch.softmax(predictions, dim=1)  # Convert raw logits to probabilities
     
+    # Ensure the target tensor contains valid indices (0 <= target <= n_classes-1)
+    assert (targets >= 0).all() and (targets < predictions.shape[1]).all(), "Target values out of valid range"
+    
+    # Convert the targets to one-hot format
     targets_one_hot = F.one_hot(targets, num_classes=predictions.shape[1]).permute(0, 3, 1, 2).float()
+
+    # Mask out ignored labels (255) by multiplying by the mask
     targets_one_hot = targets_one_hot * (targets != 255).unsqueeze(1).float()  # Mask out ignored labels
 
+    # Compute intersection and union
     intersection = (predictions * targets_one_hot).sum(dim=(2, 3))
     union = predictions.sum(dim=(2, 3)) + targets_one_hot.sum(dim=(2, 3))
 
+    # Compute Dice coefficient and loss
     dice = (2 * intersection + epsilon) / (union + epsilon)
-    dice_loss = 1 - dice.mean()
+    dice_loss_value = 1 - dice.mean()
 
-    return dice_loss
+    return dice_loss_value
 
 # Function to calculate mean and standard deviation
 def calculate_mean_std(dataloader):
