@@ -258,7 +258,7 @@ def main(args):
     criterion = nn.CrossEntropyLoss(ignore_index=255)  # Ignore the void class
 
     # Define the optimizer
-    optimizer = AdamW(model.parameters(), lr=args.lr, weight_decay=1e-4)
+    optimizer = AdamW(model.parameters(), lr=args.lr) # disable weight_decay=1e-4 for now
 
     # Training loop
     best_valid_loss = float('inf')
