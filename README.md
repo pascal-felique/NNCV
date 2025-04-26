@@ -149,7 +149,7 @@ The trained Teacher model used for Knowledge Distillation belongs to Model 10 wh
 
 - **slurms/**:
 
-This folder contains the outputs of the slurm jobs that were run for training the models are available in the slurms folder:
+This folder contains the outputs of the slurm jobs that were run for training the models:
 
 Outputs 1-5 belong to Curriculum Learning run 1 (no weight decay during training)
 
