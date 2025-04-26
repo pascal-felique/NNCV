@@ -13,6 +13,7 @@ We have made 2 versions of the training script: perform training with Curriculum
 There are 2 different slurm job scripts to either launch the training based on Curriculum Learning or the training based on Curriculum Learning and Knowledge Distillation.
 
 There is a separate Python tool that can be used to evaluate the efficiency of a trained model on the validation dataset.
+This tool is performed locally on the computer, as we need to have access to the thop library which was not available on the super cluster.
 
 ### Fast-SCNN model architecture
 
