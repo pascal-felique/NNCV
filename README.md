@@ -15,6 +15,16 @@ There are 2 different slurm job scripts to either launch the training based on C
 There is a separate Python tool that can be used to evaluate the efficiency of a trained model on the validation dataset.
 This tool is performed locally on the computer, as we need to have access to the thop library which was not available on the super cluster.
 
+The trained models are available in the models folder.
+
+The outputs of the slurm jobs that were run for training the models are available in the slurms folder.
+
+We have provided an Excel sheet with the choice of resolutions for images and patches that are used during Curriculum Learning.
+
+There is an Excel sheet with the durations of the simulations to indicate that training becomes more difficult during the curriculum.
+
+And finally, there is an Excel sheet with the efficiency measurements for the different trained models.
+
 ### Fast-SCNN model architecture
 
 Fast-SCNN is a lightweight and efficient model architecture designed for real-time semantic segmentation on edge devices.
@@ -103,3 +113,41 @@ To follow the curriculum correctly during Curriculum Learning, you have to incre
 You have to update the location of the previous trained Student model at a lower resolution.
 
 You keep the same available trained Teacher model during the entire curriculum.
+
+### Trained models
+
+- **models/**:
+
+This folder containes the trained models:
+Models 1-5 belong to Curriculum Learning run 1 (no weight decay during training)
+Models 6-10 belong to Curriculum Learning run 2 (weight decay during training)
+Models 11-15 belong to Curriculum Learning and Knowledge Distillation run 1 (no weight decay during training)
+Models 16-20 belong to Curriculum Learning and Knowledge Distillation run 2 (weight decay during training)
+
+### Slurm job outputs
+
+- **slurms/**:
+
+This folder contains the outputs of the slurm jobs that were run for training the models are available in the slurms folder:
+Outputs 1-5 belong to Curriculum Learning run 1 (no weight decay during training)
+Outputs 6-10 belong to Curriculum Learning run 2 (weight decay during training)
+Outputs 11-15 belong to Curriculum Learning and Knowledge Distillation run 1 (no weight decay during training)
+Outputs 16-20 belong to Curriculum Learning and Knowledge Distillation run 2 (weight decay during training)
+
+### Resolutions for images and patches used in the curriculum
+
+- **01. Resolutions for Images and Patches.xlsx**:
+
+This is an Excel sheet with the choice of resolutions for images and patches that are used during Curriculum Learning.
+
+### Durations of simulations
+
+- **02. Durations for Simulations.xlsx**:
+
+This is an Excel sheet with the durations of the simulations to indicate that training becomes more difficult during the curriculum.
+
+### Efficiency of trained models
+
+- **03. Evaluation of Efficiency on Validation Dataset.xlsx**:
+
+This is an Excel sheet with the efficiency measurements for the different trained models.
