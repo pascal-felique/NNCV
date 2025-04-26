@@ -10,6 +10,8 @@ The trained models and slurm job outputs are provided as well.
 
 There are several Excel sheets with calculations and measurements.
 
+There is a folder with training loss and validation graphs that were captured from the Weights & Biases platform.
+
 ## Overview
 
 We have modified and integrated the code of the Fast-SCNN model architecture to make it compatible with the existing training framework.
@@ -29,7 +31,9 @@ We have provided an Excel sheet with the choice of resolutions for images and pa
 
 There is an Excel sheet with the durations of the simulations to indicate that the training becomes more difficult when moving further through the curriculum.
 
-And finally, there is an Excel sheet with the efficiency measurements for the different trained models.
+There is an Excel sheet with the efficiency measurements for the different trained models.
+
+There is a folder with training loss and validation graphs that were captured from the Weights & Biases platform.
 
 ### Fast-SCNN model architecture
 
@@ -160,3 +164,9 @@ This is an Excel sheet with the durations of the simulations to indicate that tr
 - **03. Evaluation of Efficiency on Validation Dataset.xlsx**:
 
 This is an Excel sheet with the efficiency measurements for the different trained models.
+
+### Training loss and validation graphs
+
+- **graphs/**:
+
+This folder contains training loss and validation graphs that were captured from the Weights & Biases platform.
