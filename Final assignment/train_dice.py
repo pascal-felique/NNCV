@@ -81,26 +81,26 @@ patch_height=patch_height1
 
 def dice_loss(predictions, targets, epsilon=1e-6):
     """
-    Computes the Dice loss between the predicted and target tensors.
-    Assumes that the target tensor contains values in the range [0, n_classes-1].
-    The Dice loss also ignores the label `255` (void class).
+    Computes Dice loss between predictions and targets, ignoring label 255.
     """
-    predictions = torch.softmax(predictions, dim=1)  # Convert raw logits to probabilities
-    
-    # Ensure the target tensor contains valid indices (0 <= target <= n_classes-1)
-    assert (targets >= 0).all() and (targets < predictions.shape[1]).all(), "Target values out of valid range"
-    
-    # Convert the targets to one-hot format
-    targets_one_hot = F.one_hot(targets, num_classes=predictions.shape[1]).permute(0, 3, 1, 2).float()
+    predictions = torch.softmax(predictions, dim=1)  # (B, C, H, W)
 
-    # Mask out ignored labels (255) by multiplying by the mask
-    targets_one_hot = targets_one_hot * (targets != 255).unsqueeze(1).float()  # Mask out ignored labels
+    # Create mask where labels are NOT 255
+    valid_mask = (targets != 255)
 
-    # Compute intersection and union
+    # Only select valid targets
+    targets_valid = targets.clone()
+    targets_valid[~valid_mask] = 0  # Temporarily assign a valid class (e.g., 0) where it was invalid, to avoid issues in one-hot
+
+    targets_one_hot = F.one_hot(targets_valid, num_classes=predictions.shape[1]).permute(0, 3, 1, 2).float()
+
+    # Zero-out the positions where labels were invalid
+    targets_one_hot = targets_one_hot * valid_mask.unsqueeze(1).float()
+
+    # Now calculate intersection and union
     intersection = (predictions * targets_one_hot).sum(dim=(2, 3))
-    union = predictions.sum(dim=(2, 3)) + targets_one_hot.sum(dim=(2, 3))
+    union = (predictions + targets_one_hot).sum(dim=(2, 3))
 
-    # Compute Dice coefficient and loss
     dice = (2 * intersection + epsilon) / (union + epsilon)
     dice_loss_value = 1 - dice.mean()
 
