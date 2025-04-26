@@ -119,6 +119,7 @@ This is the slurm job script to launch the training with Curriculum Learning and
 
 ### Tool to evaluate the efficiency of a trained model on the validation dataset
 
+- **main_efficiency.sh**:
 - **evaluate_efficiency.sh**:
 
 You have to copy the trained model that you want to evaluate in the models folder to the file model.pth in the same folder.
