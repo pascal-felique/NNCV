@@ -80,16 +80,31 @@ patch_width=patch_width1
 patch_height=patch_height1
 
 def dice_loss(predictions, targets, epsilon=1e-6):
-    predictions = torch.softmax(predictions, dim=1)
-    targets_one_hot = F.one_hot(targets, num_classes=predictions.shape[1]).permute(0, 3, 1, 2).float()
+    """
+    Computes Dice loss between predictions and targets, ignoring label 255.
+    """
+    predictions = torch.softmax(predictions, dim=1)  # (B, C, H, W)
 
+    # Create mask where labels are NOT 255
+    valid_mask = (targets != 255)
+
+    # Only select valid targets
+    targets_valid = targets.clone()
+    targets_valid[~valid_mask] = 0  # Temporarily assign a valid class (e.g., 0) where it was invalid, to avoid issues in one-hot
+
+    targets_one_hot = F.one_hot(targets_valid, num_classes=predictions.shape[1]).permute(0, 3, 1, 2).float()
+
+    # Zero-out the positions where labels were invalid
+    targets_one_hot = targets_one_hot * valid_mask.unsqueeze(1).float()
+
+    # Now calculate intersection and union
     intersection = (predictions * targets_one_hot).sum(dim=(2, 3))
-    union = predictions.sum(dim=(2, 3)) + targets_one_hot.sum(dim=(2, 3))
+    union = (predictions + targets_one_hot).sum(dim=(2, 3))
 
     dice = (2 * intersection + epsilon) / (union + epsilon)
-    dice_loss = 1 - dice.mean()
+    dice_loss_value = 1 - dice.mean()
 
-    return dice_loss
+    return dice_loss_value
 
 def distillation_loss(student_logits, teacher_logits, labels, T, alpha):
     kd_loss = F.kl_div(
