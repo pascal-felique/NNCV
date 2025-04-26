@@ -2,7 +2,7 @@
 
 We have used the Fast-SCNN model architecture for training semantic segmentation on the Cityscapes dataset.
 
-The focus of the training is to achieve a high efficiency and at the same time meet the minimum model performance.
+The focus of the model architecture is to achieve a high efficiency and at the same time meet the minimum model performance.
 
 This repository contains the modifications and training scripts that were used for training the models.
 
