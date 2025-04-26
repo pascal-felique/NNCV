@@ -18,7 +18,7 @@ There is a separate Python tool that can be used to evaluate the efficiency of a
 
 Fast-SCNN is a lightweight and efficient model architecture designed for real-time semantic segmentation on edge devices.
 
-- **fast_scnn.sh**:
+- **fast_scnn.py**:
 
 We could not find the official implementation of the Fast-SCNN model architecture from the researchers at Toshiba Research Europe and Cambridge University.
 
@@ -33,6 +33,7 @@ Two files need to be modified before starting to train with Curriculum Learning:
 - **main.sh**:
 
 You have to update the new experiment id and provide the location of the previous trained Teacher model at a lower resolution.
+
 If you start the training at the lowest resolution, then you have to specify "none" for the previous trained Teacher model.
 
 - **train.py**:
@@ -43,7 +44,8 @@ resized_image_width, resized_image_height, patch_width, patch_height
 You can choose between 5 profiles: from low resolution, to medium resolution, high resolution, higher resolution and highest resolution.
 
 To follow the curriculum correctly during Curriculum Learning, you have to increase the resolution in each training run.
-You have to update the location of the previous trained Teacher model at a lower resolution.
+
+And each time, you have to update the location of the previous trained Teacher model at a lower resolution.
 
 ### Training with Curriculum Learning and Knowledge Distillation (Train a Student model)
 
@@ -66,7 +68,7 @@ You can choose between 5 profiles from low resolution, to medium resolution, hig
 
 To follow the curriculum correctly during Curriculum Learning, you have to increase the resolution in each training run.
 
-You have to update the location of the previous trained Student model at a lower resolution.
+And each time, you have update the location of the previous trained Student model at a lower resolution.
 
 You keep the same available trained Teacher model during the entire curriculum.
 
