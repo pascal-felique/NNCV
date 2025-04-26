@@ -79,7 +79,7 @@ The choice for the experiment id and the previous trained Student model depends 
 
 If you start the training at the initial lowest resolution, then you have to specify "none" for the previous trained Student model.
 
-You have to provide the location of the available trained Teacher model (who has learned the entire curriculum in the past).
+You have to provide the location of the trained Teacher model (who has learned the entire curriculum already).
 
 - **train_distillation.py**:
 
