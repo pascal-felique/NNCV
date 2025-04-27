@@ -20,9 +20,9 @@ There is a folder with the original paper about the Fast-SCNN model architecture
 
 We have modified and integrated the code of the Fast-SCNN model architecture to make it compatible with the existing training framework.
 
-We have made 2 versions of the training script: perform training with Curriculum Learning or perform training with Curriculum Learning and Knowledge Distillation.
+We have made different versions of the training script: perform training with Curriculum Learning or perform training with Curriculum Learning and Knowledge Distillation.
 
-There are 2 different slurm job scripts to either launch the training based on Curriculum Learning or the training based on Curriculum Learning and Knowledge Distillation.
+There are different slurm job scripts to either launch the training based on Curriculum Learning or the training based on Curriculum Learning and Knowledge Distillation.
 
 There is also a variant of Curriculum Learning with a Dice Loss component included in the Loss calculation.
 
@@ -212,19 +212,19 @@ Outputs 11-15 belong to Curriculum Learning Run 3 (with Knowledge Distillation) 
 
 Outputs 16-20 belong to Curriculum Learning Run 4 (with Knowledge Distillation) (weight decay during training)
 
-Outputs 21-25 belong to Curriculum Learning Run 1 (with Dice Loss component) (no weight decay during training)
+Outputs 21-25 belong to Curriculum Learning Run 5 (with Dice Loss component) (no weight decay during training)
 
 New trained models that will be available
 
-Outputs 26-30 belong to Curriculum Learning Run 2 (with Dice Loss component) (weight decay during training)
+Outputs 26-30 belong to Curriculum Learning Run 6 (with Dice Loss component) (weight decay during training)
 
 Not available due to time constraints
 
-Outputs 31-35 belong to Curriculum Learning Run 3 (with Knowledge Distillation) (with Dice Loss component) (no weight decay during training)
+Outputs 31-35 belong to Curriculum Learning Run 7 (with Knowledge Distillation) (with Dice Loss component) (no weight decay during training)
 
 New trained models that will be available
 
-Outputs 36-40 belong to Curriculum Learning Run 4 (with Knowledge Distillation) (with Dice Loss component) (weight decay during training)
+Outputs 36-40 belong to Curriculum Learning Run 8 (with Knowledge Distillation) (with Dice Loss component) (weight decay during training)
 
 Not available due to time constraints
 
