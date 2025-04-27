@@ -178,6 +178,8 @@ Models 16-20 belong to Curriculum Learning Run 4 (with Knowledge Distillation) (
 
 The trained Teacher model used for Knowledge Distillation belongs to Model 10 which corresponds to the Teacher that completed the entire curriculum (weight decay during training)
 
+Not available due to time constraints
+
 Models 21-25 belong to Curriculum Learning Run 5 (with Dice Loss component) (no weight decay during training)
 
 New trained models that will be available
@@ -211,6 +213,8 @@ Outputs 6-10 belong to Curriculum Learning Run 2 (weight decay during training)
 Outputs 11-15 belong to Curriculum Learning Run 3 (with Knowledge Distillation) (no weight decay during training)
 
 Outputs 16-20 belong to Curriculum Learning Run 4 (with Knowledge Distillation) (weight decay during training)
+
+Not available due to time constraints
 
 Outputs 21-25 belong to Curriculum Learning Run 5 (with Dice Loss component) (no weight decay during training)
 
