@@ -14,6 +14,8 @@ There are several Excel sheets with calculations and measurements.
 
 There is a folder with training loss and validation graphs that were captured from the Weights & Biases platform.
 
+There is a folder with the original paper about the Fast-SCNN model architecture and a presentation about Fast-SCNN from BMVC 2019.
+
 ## Overview
 
 We have modified and integrated the code of the Fast-SCNN model architecture to make it compatible with the existing training framework.
@@ -21,6 +23,10 @@ We have modified and integrated the code of the Fast-SCNN model architecture to 
 We have made 2 versions of the training script: perform training with Curriculum Learning or perform training with Curriculum Learning and Knowledge Distillation.
 
 There are 2 different slurm job scripts to either launch the training based on Curriculum Learning or the training based on Curriculum Learning and Knowledge Distillation.
+
+There is also a variant of Curriculum Learning with a Dice Loss component included in the Loss calculation.
+
+There is also a variant of Curriculum Learning and Knowledge Distillation with a Dice Loss component included in the Loss calculation.
 
 There is a separate Python tool that can be used to evaluate the efficiency of a trained model on the validation dataset.
 This tool is performed locally on the computer, as we need to have access to the thop library which was not available on the super cluster.
@@ -36,6 +42,8 @@ There is an Excel sheet with the durations of the simulations to indicate that t
 There is an Excel sheet with the efficiency measurements for the different trained models.
 
 There is a folder with training loss and validation graphs that were captured from the Weights & Biases platform.
+
+There is a folder with the original paper about the Fast-SCNN model architecture and a presentation about Fast-SCNN from BMVC 2019.
 
 ### Fast-SCNN model architecture
 
@@ -53,7 +61,7 @@ We had to make only slight changes to integrate this model in the existing train
 
 ### Training with Curriculum Learning (Train a Teacher model)
 
-Two files need to be modified before starting to train with Curriculum Learning:
+The following files need to be modified before starting to train with Curriculum Learning:
 
 - **main.sh**:
 
@@ -62,6 +70,10 @@ You have to update the new experiment id and provide the location of the previou
 The choice for the experiment id and the previous trained Teacher model depends on the stage in which you are during the curriculum.
 
 If you start the training at the initial lowest resolution, then you have to specify "none" for the previous trained Teacher model.
+
+- **main_dice.sh**:
+
+There is also a variant of Curriculum Learning with a Dice Loss component included in the Loss calculation.
 
 - **train.py**:
 
@@ -75,9 +87,13 @@ To follow the curriculum correctly during Curriculum Learning, you have to incre
 
 Each time you advance in the curriculum, you have to update the location of the previous trained Teacher model which was trained at a lower resolution.
 
+- **train_dice.py**:
+
+There is also a variant of Curriculum Learning with a Dice Loss component included in the Loss calculation.
+
 ### Training with Curriculum Learning and Knowledge Distillation (Train a Student model)
 
-Two files need to be modified before starting to train with Curriculum Learning and Knowledge Distillation:
+The following files need to be modified before starting to train with Curriculum Learning and Knowledge Distillation:
 
 - **main_distillation.sh**:
 
@@ -90,6 +106,10 @@ If you start the training at the initial lowest resolution, then you have to spe
 You have to provide the location of the trained Teacher model (who has learned the entire curriculum already).
 
 The same trained Teacher model will be used during the entire curriculum of the Student.
+
+- **main_distillation_dice.sh**:
+
+There is also a variant of Curriculum Learning and Knowledge Distillation with a Dice Loss component included in the Loss calculation.
 
 - **train_distillation.py**:
 
@@ -105,22 +125,34 @@ Each time you advance in the curriculum, you have to update the location of the 
 
 The same trained Teacher model will be used during the entire curriculum of the Student.
 
+- **train_distillation_dice.py**:
+
+There is also a variant of Curriculum Learning and Knowledge Distillation with a Dice Loss component included in the Loss calculation.
+
 ### Slurm job scripts to start training
 
-There are two different slurm job scripts to either train with Curriculum Learning or train with Curriculum Learning and Knowledge Distillation.
+There are different slurm job scripts to either train with Curriculum Learning or train with Curriculum Learning and Knowledge Distillation.
 
  **jobscript_slurm.sh**:
 
 This is the slurm job script to launch the training with Curriculum Learning.
 
+**jobscript_slurm_dice.sh**:
+
+There is also a variant of Curriculum Learning with a Dice Loss component included in the Loss calculation.
+
  **jobscript_slurm_distillation.sh**:
 
 This is the slurm job script to launch the training with Curriculum Learning and Knowledge Distillation.
 
+**jobscript_slurm_distillation_dice.sh**:
+
+There is also a variant of Curriculum Learning and Knowledge Distillation with a Dice Loss component included in the Loss calculation.
+
 ### Tool to evaluate the efficiency of a trained model on the validation dataset
 
 - **main_efficiency.sh**:
-- **evaluate_efficiency.sh**:
+- **evaluate_efficiency.py**:
 
 You have to copy the trained model that you want to evaluate in the models folder to the file model.pth in the same folder.
 
@@ -134,17 +166,37 @@ resized_image_width, resized_image_height
 
 This folder containes the trained models:
 
-Models 1-5 belong to Curriculum Learning run 1 (no weight decay during training)
+Models 1-5 belong to Curriculum Learning Run 1 (no weight decay during training)
 
-Models 6-10 belong to Curriculum Learning run 2 (weight decay during training)
+Models 6-10 belong to Curriculum Learning Run 2 (weight decay during training)
 
-Models 11-15 belong to Curriculum Learning and Knowledge Distillation run 1 (no weight decay during training)
+Models 11-15 belong to Curriculum Learning Run 3 (with Knowledge Distillation) (no weight decay during training)
 
 The trained Teacher model used for Knowledge Distillation belongs to Model 5 which corresponds to the Teacher that completed the entire curriculum (no weight decay during training)
 
-Models 16-20 belong to Curriculum Learning and Knowledge Distillation run 2 (weight decay during training)
+Models 16-20 belong to Curriculum Learning Run 4 (with Knowledge Distillation) (weight decay during training)
 
 The trained Teacher model used for Knowledge Distillation belongs to Model 10 which corresponds to the Teacher that completed the entire curriculum (weight decay during training)
+
+Models 21-25 belong to Curriculum Learning Run 5 (with Dice Loss component) (no weight decay during training)
+
+New trained models that will be available
+
+Models 26-30 belong to Curriculum Learning Run 6 (with Dice Loss component) (weight decay during training)
+
+Not available due to time constraints
+
+Models 31-35 belong to Curriculum Learning Run 7 (with Knowledge Distillation) (with Dice Loss component) (no weight decay during training)
+
+The trained Teacher model used for Knowledge Distillation belongs to Model 25 which corresponds to the Teacher that completed the entire curriculum (no weight decay during training)
+
+New trained models that will be available
+
+Models 36-40 belong to Curriculum Learning Run 8 (with Knowledge Distillation) (with Dice Loss component) (weight decay during training)
+
+The trained Teacher model used for Knowledge Distillation belongs to Model 30 which corresponds to the Teacher that completed the entire curriculum (weight decay during training)
+
+Not available due to time constraints
 
 ### Slurm job outputs
 
@@ -152,27 +204,41 @@ The trained Teacher model used for Knowledge Distillation belongs to Model 10 wh
 
 This folder contains the outputs of the slurm jobs that were run for training the models:
 
-Outputs 1-5 belong to Curriculum Learning run 1 (no weight decay during training)
+Outputs 1-5 belong to Curriculum Learning Run 1 (no weight decay during training)
 
-Outputs 6-10 belong to Curriculum Learning run 2 (weight decay during training)
+Outputs 6-10 belong to Curriculum Learning Run 2 (weight decay during training)
 
-Outputs 11-15 belong to Curriculum Learning and Knowledge Distillation run 1 (no weight decay during training)
+Outputs 11-15 belong to Curriculum Learning Run 3 (with Knowledge Distillation) (no weight decay during training)
 
-Outputs 16-20 belong to Curriculum Learning and Knowledge Distillation run 2 (weight decay during training)
+Outputs 16-20 belong to Curriculum Learning Run 4 (with Knowledge Distillation) (weight decay during training)
 
-### Resolutions for images and patches used in the curriculum
+Outputs 21-25 belong to Curriculum Learning Run 1 (with Dice Loss component) (no weight decay during training)
+
+New trained models that will be available
+
+Outputs 26-30 belong to Curriculum Learning Run 2 (with Dice Loss component) (weight decay during training)
+
+Not available due to time constraints
+
+Outputs 31-35 belong to Curriculum Learning Run 3 (with Knowledge Distillation) (with Dice Loss component) (no weight decay during training)
+
+New trained models that will be available
+
+Outputs 36-40 belong to Curriculum Learning Run 4 (with Knowledge Distillation) (with Dice Loss component) (weight decay during training)
+
+Not available due to time constraints
+
+### Measurements
+
+- **measurements/**:
 
 - **Resolutions for Images and Patches.xlsx**:
 
 This is an Excel sheet with the choice of resolutions for images and patches that are used during Curriculum Learning.
 
-### Durations of simulations
-
 - **Durations for Simulations.xlsx**:
 
 This is an Excel sheet with the durations of the simulations to indicate that training becomes more difficult when moving further through the curriculum.
-
-### Efficiency of trained models
 
 - **Evaluation of Efficiency on Validation Dataset.xlsx**:
 
@@ -183,3 +249,9 @@ This is an Excel sheet with the efficiency measurements for the different traine
 - **graphs/**:
 
 This folder contains training loss and validation graphs that were captured from the Weights & Biases platform.
+
+### References
+
+- **references/**:
+
+This folder contains the original paper about the Fast-SCNN model architecture and a presentation about Fast-SCNN from BMVC 2019.
