@@ -159,7 +159,7 @@ def main(args):
     # Define the device
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-  # Define the draft transform without normalization
+    # Define the draft transform without normalization
     #draft_transform = Compose([
     #    ToImage(),
     #    ToDtype(torch.float32, scale=True),
