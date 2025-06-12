@@ -73,10 +73,10 @@ patch_height5=768
 ####################################
 # Select image size and patch size
 ####################################
-resized_image_width=resized_image_width3
-resized_image_height=resized_image_height3
-patch_width=patch_width3
-patch_height=patch_height3
+resized_image_width=resized_image_width4
+resized_image_height=resized_image_height4
+patch_width=patch_width4
+patch_height=patch_height4
 
 # Function to calculate mean and standard deviation
 def calculate_mean_std(dataloader):
