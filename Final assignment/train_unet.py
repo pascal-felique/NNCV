@@ -251,6 +251,7 @@ def main(args):
     # Load weights and biases from previous run if model path is different from none
     if args.previous_model_path != "none":
         model.load_state_dict(torch.load(args.previous_model_path, map_location=device))
+        torch.cuda.empty_cache()
         print("Load weights and biases from previous run")
     else:
         print("Start training from scratch with random weights and biases")
