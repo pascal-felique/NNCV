@@ -14,7 +14,8 @@ Feel free to customize the script as needed for your use case.
 """
 import os
 # PyTorch option to avoid GPU memory fragmentation
-os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
+#os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
+os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True,max_split_size_mb:128"
 
 from argparse import ArgumentParser
 from tqdm import tqdm  # Import tqdm
