@@ -7,5 +7,5 @@ python3 train_unet.py \
     --lr 0.001 \
     --num-workers 8 \
     --seed 42 \
-    --experiment-id "unet-training-experiment-44" \
-    --previous-model-path "./models/unet-training-experiment-43.pth" \
+    --experiment-id "unet-training-experiment-45" \
+    --previous-model-path "./models/unet-training-experiment-44.pth" \
