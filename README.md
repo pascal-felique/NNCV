@@ -4,7 +4,9 @@
 
 We have used the Fast-SCNN model architecture for training semantic segmentation on the Cityscapes dataset.
 
-The focus of the model architecture is to achieve a high efficiency and at the same time meet the minimum model performance.
+The U-Net model architecture has been trained as well and serves as a baseline reference to compare both model architectures.
+
+The focus of the Fast-SCNN model architecture is to achieve a high efficiency and at the same time meet the minimum model performance.
 
 This repository contains the modifications and training scripts that were used for training the models.
 
@@ -19,6 +21,8 @@ There is a references folder with the original paper about the Fast-SCNN model a
 ## Overview
 
 We have modified and integrated the code of the Fast-SCNN model architecture to make it compatible with the existing training framework.
+
+The U-Net model architecture serves as a baseline reference to compare both model architectures.
 
 We have made different versions of the training script: perform training with Curriculum Learning or perform training with Curriculum Learning and Knowledge Distillation.
 
@@ -47,6 +51,14 @@ There is a figures folder with training loss and validation loss graphs, and oth
 
 There is a references folder with the original paper about the Fast-SCNN model architecture and a presentation about Fast-SCNN from BMVC 2019.
 
+### U-Net model architecture
+
+The U-Net model architecture serves as a baseline reference to compare both model architectures.
+
+- **unet.py**:
+
+This implementation contains the default provided code for the U-Net model architecture.
+
 ### Fast-SCNN model architecture
 
 Fast-SCNN is a lightweight and efficient model architecture designed for real-time semantic segmentation on edge devices.
@@ -65,7 +77,8 @@ We had to make only slight changes to integrate this model in the existing train
 
 The following files need to be modified before starting to train with Curriculum Learning:
 
-- **main.sh**:
+- **main_unet.sh**: Training with U-Net model architecture
+- **main.sh**: Training with Fast-SCNN model architecture
 
 You have to update the new experiment id and provide the location of the previous trained Teacher model which was trained at a lower resolution.
 
@@ -77,7 +90,8 @@ If you start the training at the initial lowest resolution, then you have to spe
 
 There is also a variant of Curriculum Learning with a Dice Loss component included in the Loss calculation.
 
-- **train.py**:
+- **train_unet.py**: Training with U-Net model architecture
+- **train.py**: Training with Fast-SCNN model architecture
 
 You have to make sure that the resized image dimensions and patch dimensions point to the resolution of the current curriculum:
 
@@ -135,7 +149,8 @@ There is also a variant of Curriculum Learning and Knowledge Distillation with a
 
 There are different slurm job scripts to either train with Curriculum Learning or train with Curriculum Learning and Knowledge Distillation.
 
- **jobscript_slurm.sh**:
+ **jobscript_slurm_unet.sh**: Training with U-Net model architecture
+ **jobscript_slurm.sh**: Training with Fast-SCNN model architecture
 
 This is the slurm job script to launch the training with Curriculum Learning.
 
@@ -167,6 +182,8 @@ resized_image_width, resized_image_height
 - **models/**:
 
 This folder containes the trained models:
+
+TRAINED FAST-SCNN MODELS
 
 Models 1-5 belong to Curriculum Learning Run 1 (no weight decay during training)
 
@@ -202,11 +219,17 @@ The trained Teacher model used for Knowledge Distillation belongs to Model 30 wh
 
 Not available due to time constraints
 
+TRAINED U-NET MODELS
+
+Models 41-45 belong to Curriculum Learning Run 9 (no weight decay during training)
+
 ### Slurm job outputs
 
 - **slurms/**:
 
 This folder contains the outputs of the slurm jobs that were run for training the models:
+
+LOG FILES OF TRAINED FAST-SCNN MODELS
 
 Outputs 1-5 belong to Curriculum Learning Run 1 (no weight decay during training)
 
@@ -234,6 +257,10 @@ Outputs 36-40 belong to Curriculum Learning Run 8 (with Knowledge Distillation) 
 
 Not available due to time constraints
 
+LOG FILES OF TRAINED U-NET MODELS
+
+Outputs 41-45 belong to Curriculum Learning Run 9 (no weight decay during training)
+
 ### Measurements
 
 - **measurements/**:
@@ -248,7 +275,11 @@ This is an Excel sheet with the durations of the simulations to indicate that tr
 
 - **Evaluation of Efficiency on Validation Dataset.xlsx**:
 
-This is an Excel sheet with the efficiency measurements for the different trained models.
+This is an Excel sheet with the efficiency measurements for the different trained models on the validation dataset.
+
+- **Evaluation of Efficiency on Test Dataset - Via CodaLab**:
+
+This is an Excel sheet with the efficiency measurements for the different trained models on the test dataset.
 
 ### Figures with training loss and validation loss graphs, and other measurements
 
