@@ -184,8 +184,11 @@ There is also a variant of Curriculum Learning and Knowledge Distillation with a
 
 ### Tool to evaluate the efficiency of a trained model on the validation dataset
 
-- **main_efficiency.sh**:
-- **evaluate_efficiency.py**:
+- **main_efficiency_unet.sh**: Script to launch efficiency tool for U-Net model architecture
+- **evaluate_efficiency_unet.py**: Python code of efficiency tool for U-Net model architecture
+
+- **main_efficiency.sh**: Script to launch efficiency tool for Fast-SCNN model architecture
+- **evaluate_efficiency.py**: Python code of efficiency tool for Fast-SCNN model architecture
 
 You have to copy the trained model that you want to evaluate in the models folder to the file model.pth in the same folder.
 
