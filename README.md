@@ -88,6 +88,8 @@ The choice for the experiment id and the previous trained Teacher model depends 
 
 If you start the training at the initial lowest resolution, then you have to specify "none" for the previous trained Teacher model.
 
+ALTERNATIVE: CURRICULUM LEARNING WITH DICE LOSS COMPONENT
+
 - **main_dice.sh**:
 
 There is also a variant of Curriculum Learning with a Dice Loss component included in the Loss calculation.
@@ -106,6 +108,8 @@ You can choose between 5 profiles: from low resolution, to medium resolution, hi
 To follow the curriculum correctly during Curriculum Learning, you have to increase the resolution in each stage.
 
 Each time you advance in the curriculum, you have to update the location of the previous trained Teacher model which was trained at a lower resolution.
+
+ALTERNATIVE: CURRICULUM LEARNING WITH DICE LOSS COMPONENT
 
 - **train_dice.py**:
 
@@ -129,6 +133,8 @@ You have to provide the location of the trained Teacher model (who has learned t
 
 The same trained Teacher model will be used during the entire curriculum of the Student.
 
+ALTERNATIVE: CURRICULUM LEARNING AND KNOWLEDGE DISTILLATION WITH DICE LOSS COMPONENT
+
 - **main_distillation_dice.sh**:
 
 There is also a variant of Curriculum Learning and Knowledge Distillation with a Dice Loss component included in the Loss calculation.
@@ -148,6 +154,8 @@ To follow the curriculum correctly during Curriculum Learning, you have to incre
 Each time you advance in the curriculum, you have to update the location of the previous trained Student model which was trained at a lower resolution.
 
 The same trained Teacher model will be used during the entire curriculum of the Student.
+
+ALTERNATIVE: CURRICULUM LEARNING AND KNOWLEDGE DISTILLATION WITH DICE LOSS COMPONENT
 
 - **train_distillation_dice.py**:
 
