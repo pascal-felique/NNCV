@@ -51,6 +51,8 @@ There is a figures folder with training loss and validation loss graphs, and oth
 
 There is a references folder with the original paper about the Fast-SCNN model architecture and a presentation about Fast-SCNN from BMVC 2019.
 
+## Model architectures
+
 ### U-Net model architecture
 
 The U-Net model architecture serves as a baseline reference to compare both model architectures.
@@ -73,11 +75,11 @@ This implementation adopts all the main principles from the Fast-SCNN model arch
 
 We had to make only slight changes to integrate this model in the existing training framework.
 
-### Training with Curriculum Learning (Train a Teacher model)
+## Training with Curriculum Learning (Train a Teacher model)
 
 The following files need to be modified before starting to train with Curriculum Learning:
 
-CONFIGURATION SETTINGS IN SCRIPT THAT LAUNCHES PYTHON CODE
+### CONFIGURATION SETTINGS IN SCRIPT THAT LAUNCHES PYTHON CODE
 
 - **main_unet.sh**: Training with U-Net model architecture
 - **main.sh**: Training with Fast-SCNN model architecture
@@ -88,13 +90,13 @@ The choice for the experiment id and the previous trained Teacher model depends 
 
 If you start the training at the initial lowest resolution, then you have to specify "none" for the previous trained Teacher model.
 
-ALTERNATIVE: CURRICULUM LEARNING WITH DICE LOSS COMPONENT
+### ALTERNATIVE: CURRICULUM LEARNING WITH DICE LOSS COMPONENT
 
 - **main_dice.sh**:
 
 There is also a variant of Curriculum Learning with a Dice Loss component included in the Loss calculation.
 
-CONFIGURATION SETTINGS IN ACTUAL PYTHON CODE
+### CONFIGURATION SETTINGS IN ACTUAL PYTHON CODE
 
 - **train_unet.py**: Training with U-Net model architecture
 - **train.py**: Training with Fast-SCNN model architecture
@@ -109,17 +111,17 @@ To follow the curriculum correctly during Curriculum Learning, you have to incre
 
 Each time you advance in the curriculum, you have to update the location of the previous trained Teacher model which was trained at a lower resolution.
 
-ALTERNATIVE: CURRICULUM LEARNING WITH DICE LOSS COMPONENT
+### ALTERNATIVE: CURRICULUM LEARNING WITH DICE LOSS COMPONENT
 
 - **train_dice.py**:
 
 There is also a variant of Curriculum Learning with a Dice Loss component included in the Loss calculation.
 
-### Training with Curriculum Learning and Knowledge Distillation (Train a Student model)
+## Training with Curriculum Learning and Knowledge Distillation (Train a Student model)
 
 The following files need to be modified before starting to train with Curriculum Learning and Knowledge Distillation:
 
-CONFIGURATION SETTINGS IN SCRIPT THAT LAUNCHES PYTHON CODE
+### CONFIGURATION SETTINGS IN SCRIPT THAT LAUNCHES PYTHON CODE
 
 - **main_distillation.sh**:
 
@@ -133,13 +135,13 @@ You have to provide the location of the trained Teacher model (who has learned t
 
 The same trained Teacher model will be used during the entire curriculum of the Student.
 
-ALTERNATIVE: CURRICULUM LEARNING AND KNOWLEDGE DISTILLATION WITH DICE LOSS COMPONENT
+### ALTERNATIVE: CURRICULUM LEARNING AND KNOWLEDGE DISTILLATION WITH DICE LOSS COMPONENT
 
 - **main_distillation_dice.sh**:
 
 There is also a variant of Curriculum Learning and Knowledge Distillation with a Dice Loss component included in the Loss calculation.
 
-CONFIGURATION SETTINGS IN ACTUAL PYTHON CODE
+### CONFIGURATION SETTINGS IN ACTUAL PYTHON CODE
 
 - **train_distillation.py**:
 
@@ -155,13 +157,13 @@ Each time you advance in the curriculum, you have to update the location of the 
 
 The same trained Teacher model will be used during the entire curriculum of the Student.
 
-ALTERNATIVE: CURRICULUM LEARNING AND KNOWLEDGE DISTILLATION WITH DICE LOSS COMPONENT
+### ALTERNATIVE: CURRICULUM LEARNING AND KNOWLEDGE DISTILLATION WITH DICE LOSS COMPONENT
 
 - **train_distillation_dice.py**:
 
 There is also a variant of Curriculum Learning and Knowledge Distillation with a Dice Loss component included in the Loss calculation.
 
-### Slurm job scripts to start training
+## Slurm job scripts to start training
 
 There are different slurm job scripts to either train with Curriculum Learning or train with Curriculum Learning and Knowledge Distillation.
 
@@ -182,7 +184,7 @@ This is the slurm job script to launch the training with Curriculum Learning and
 
 There is also a variant of Curriculum Learning and Knowledge Distillation with a Dice Loss component included in the Loss calculation.
 
-### Tool to evaluate the efficiency of a trained model on the validation dataset
+## Tool to evaluate the efficiency of a trained model on the validation dataset
 
 - **main_efficiency_unet.sh**: Script to launch efficiency tool for U-Net model architecture
 - **evaluate_efficiency_unet.py**: Python code of efficiency tool for U-Net model architecture
@@ -196,7 +198,7 @@ You have to make sure that the resized image dimensions point to the resolution 
 
 resized_image_width, resized_image_height
 
-### Trained models
+## Trained models
 
 - **models/**:
 
@@ -242,7 +244,7 @@ TRAINED U-NET MODELS
 
 Models 41-45 belong to Curriculum Learning Run 9 (no weight decay during training)
 
-### Slurm job outputs
+## Slurm job outputs
 
 - **slurms/**:
 
@@ -280,7 +282,7 @@ LOG FILES OF TRAINED U-NET MODELS
 
 Outputs 41-45 belong to Curriculum Learning Run 9 (no weight decay during training)
 
-### Measurements
+## Measurements
 
 - **measurements/**:
 
@@ -300,13 +302,13 @@ This is an Excel sheet with the efficiency measurements for the different traine
 
 This is an Excel sheet with the efficiency measurements for the different trained models on the test dataset.
 
-### Figures with training loss and validation loss graphs, and other measurements
+## Figures with training loss and validation loss graphs, and other measurements
 
 - **figures/**:
 
 This folder contains training loss and validation graphs that were captured from the Weights & Biases platform.
 
-### References
+## References
 
 - **references/**:
 
