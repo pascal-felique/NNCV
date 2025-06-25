@@ -79,7 +79,7 @@ We had to make only slight changes to integrate this model in the existing train
 
 The following files need to be modified before starting to train with Curriculum Learning:
 
-### CONFIGURATION SETTINGS IN SCRIPT THAT LAUNCHES PYTHON CODE
+### Configuration settings in script that launches Python code
 
 - **main_unet.sh**: Training with U-Net model architecture
 - **main.sh**: Training with Fast-SCNN model architecture
@@ -90,13 +90,13 @@ The choice for the experiment id and the previous trained Teacher model depends 
 
 If you start the training at the initial lowest resolution, then you have to specify "none" for the previous trained Teacher model.
 
-### ALTERNATIVE: CURRICULUM LEARNING WITH DICE LOSS COMPONENT
+Alternative: Curriculum Learning with Dice Loss component
 
 - **main_dice.sh**:
 
 There is also a variant of Curriculum Learning with a Dice Loss component included in the Loss calculation.
 
-### CONFIGURATION SETTINGS IN ACTUAL PYTHON CODE
+### Configuration settings in actual Python code
 
 - **train_unet.py**: Training with U-Net model architecture
 - **train.py**: Training with Fast-SCNN model architecture
@@ -111,7 +111,7 @@ To follow the curriculum correctly during Curriculum Learning, you have to incre
 
 Each time you advance in the curriculum, you have to update the location of the previous trained Teacher model which was trained at a lower resolution.
 
-### ALTERNATIVE: CURRICULUM LEARNING WITH DICE LOSS COMPONENT
+Alternative: Curriculum Learning with Dice Loss component
 
 - **train_dice.py**:
 
@@ -121,7 +121,7 @@ There is also a variant of Curriculum Learning with a Dice Loss component includ
 
 The following files need to be modified before starting to train with Curriculum Learning and Knowledge Distillation:
 
-### CONFIGURATION SETTINGS IN SCRIPT THAT LAUNCHES PYTHON CODE
+### Configuration settings in script that launches Python code
 
 - **main_distillation.sh**:
 
@@ -135,13 +135,13 @@ You have to provide the location of the trained Teacher model (who has learned t
 
 The same trained Teacher model will be used during the entire curriculum of the Student.
 
-### ALTERNATIVE: CURRICULUM LEARNING AND KNOWLEDGE DISTILLATION WITH DICE LOSS COMPONENT
+Alternative: Curriculum Learning and Knowledge Distillation with Dice Loss component
 
 - **main_distillation_dice.sh**:
 
 There is also a variant of Curriculum Learning and Knowledge Distillation with a Dice Loss component included in the Loss calculation.
 
-### CONFIGURATION SETTINGS IN ACTUAL PYTHON CODE
+### Configuration settings in actual Python code
 
 - **train_distillation.py**:
 
@@ -157,7 +157,7 @@ Each time you advance in the curriculum, you have to update the location of the 
 
 The same trained Teacher model will be used during the entire curriculum of the Student.
 
-### ALTERNATIVE: CURRICULUM LEARNING AND KNOWLEDGE DISTILLATION WITH DICE LOSS COMPONENT
+Alternative: Curriculum Learning and Knowledge Distillation with Dice Loss component
 
 - **train_distillation_dice.py**:
 
