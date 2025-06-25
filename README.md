@@ -157,20 +157,20 @@ There is also a variant of Curriculum Learning and Knowledge Distillation with a
 
 There are different slurm job scripts to either train with Curriculum Learning or train with Curriculum Learning and Knowledge Distillation.
 
- **jobscript_slurm_unet.sh**: Training with U-Net model architecture
- **jobscript_slurm.sh**: Training with Fast-SCNN model architecture
+- **jobscript_slurm_unet.sh**: Training with U-Net model architecture
+- **jobscript_slurm.sh**: Training with Fast-SCNN model architecture
 
 This is the slurm job script to launch the training with Curriculum Learning.
 
-**jobscript_slurm_dice.sh**:
+- **jobscript_slurm_dice.sh**:
 
 There is also a variant of Curriculum Learning with a Dice Loss component included in the Loss calculation.
 
- **jobscript_slurm_distillation.sh**:
+- **jobscript_slurm_distillation.sh**:
 
 This is the slurm job script to launch the training with Curriculum Learning and Knowledge Distillation.
 
-**jobscript_slurm_distillation_dice.sh**:
+- **jobscript_slurm_distillation_dice.sh**:
 
 There is also a variant of Curriculum Learning and Knowledge Distillation with a Dice Loss component included in the Loss calculation.
 
