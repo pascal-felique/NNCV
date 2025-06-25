@@ -1,0 +1,148 @@
+wandb: Currently logged in as: pascal_felique (nordic-video-research) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: Currently logged in as: pascal_felique (nordic-video-research) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: Using wandb-core as the SDK backend.  Please refer to https://wandb.me/wandb-core for more information.
+wandb: Tracking run with wandb version 0.19.6
+wandb: Run data is saved locally in /home/scur1330/NNCV/wandb/wandb/run-20250612_150606-sy6whj9b
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run unet-training-experiment-43
+wandb: ⭐️ View project at https://wandb.ai/nordic-video-research/5lsm0-cityscapes-segmentation
+wandb: 🚀 View run at https://wandb.ai/nordic-video-research/5lsm0-cityscapes-segmentation/runs/sy6whj9b
+Calculating Mean and Std:   0%|          | 0/78 [00:00<?, ?it/s]Calculating Mean and Std:   1%|▏         | 1/78 [00:03<04:25,  3.44s/it]Calculating Mean and Std:   3%|▎         | 2/78 [00:03<01:54,  1.51s/it]Calculating Mean and Std:   4%|▍         | 3/78 [00:03<01:06,  1.13it/s]Calculating Mean and Std:   5%|▌         | 4/78 [00:03<00:43,  1.69it/s]Calculating Mean and Std:   6%|▋         | 5/78 [00:04<00:31,  2.29it/s]Calculating Mean and Std:   8%|▊         | 6/78 [00:04<00:24,  2.93it/s]Calculating Mean and Std:   9%|▉         | 7/78 [00:04<00:19,  3.58it/s]Calculating Mean and Std:  10%|█         | 8/78 [00:04<00:16,  4.23it/s]Calculating Mean and Std:  12%|█▏        | 9/78 [00:06<01:00,  1.14it/s]Calculating Mean and Std:  13%|█▎        | 10/78 [00:06<00:44,  1.53it/s]Calculating Mean and Std:  14%|█▍        | 11/78 [00:07<00:33,  2.02it/s]Calculating Mean and Std:  15%|█▌        | 12/78 [00:07<00:25,  2.57it/s]Calculating Mean and Std:  17%|█▋        | 13/78 [00:07<00:20,  3.19it/s]Calculating Mean and Std:  18%|█▊        | 14/78 [00:07<00:17,  3.75it/s]Calculating Mean and Std:  19%|█▉        | 15/78 [00:07<00:14,  4.34it/s]Calculating Mean and Std:  21%|██        | 16/78 [00:07<00:12,  4.89it/s]Calculating Mean and Std:  22%|██▏       | 17/78 [00:10<00:49,  1.22it/s]Calculating Mean and Std:  23%|██▎       | 18/78 [00:10<00:36,  1.62it/s]Calculating Mean and Std:  24%|██▍       | 19/78 [00:10<00:27,  2.11it/s]Calculating Mean and Std:  26%|██▌       | 20/78 [00:10<00:21,  2.68it/s]Calculating Mean and Std:  27%|██▋       | 21/78 [00:10<00:17,  3.26it/s]Calculating Mean and Std:  28%|██▊       | 22/78 [00:10<00:14,  3.93it/s]Calculating Mean and Std:  29%|██▉       | 23/78 [00:10<00:12,  4.57it/s]Calculating Mean and Std:  31%|███       | 24/78 [00:11<00:10,  5.08it/s]Calculating Mean and Std:  32%|███▏      | 25/78 [00:13<00:43,  1.23it/s]Calculating Mean and Std:  33%|███▎      | 26/78 [00:13<00:31,  1.63it/s]Calculating Mean and Std:  35%|███▍      | 27/78 [00:13<00:24,  2.11it/s]Calculating Mean and Std:  36%|███▌      | 28/78 [00:13<00:18,  2.65it/s]Calculating Mean and Std:  37%|███▋      | 29/78 [00:13<00:14,  3.27it/s]Calculating Mean and Std:  38%|███▊      | 30/78 [00:14<00:12,  3.87it/s]Calculating Mean and Std:  40%|███▉      | 31/78 [00:14<00:10,  4.50it/s]Calculating Mean and Std:  41%|████      | 32/78 [00:14<00:09,  5.09it/s]Calculating Mean and Std:  42%|████▏     | 33/78 [00:16<00:36,  1.22it/s]Calculating Mean and Std:  44%|████▎     | 34/78 [00:16<00:27,  1.62it/s]Calculating Mean and Std:  45%|████▍     | 35/78 [00:16<00:20,  2.09it/s]Calculating Mean and Std:  46%|████▌     | 36/78 [00:17<00:15,  2.63it/s]Calculating Mean and Std:  47%|████▋     | 37/78 [00:17<00:12,  3.23it/s]Calculating Mean and Std:  49%|████▊     | 38/78 [00:17<00:10,  3.84it/s]Calculating Mean and Std:  50%|█████     | 39/78 [00:17<00:08,  4.43it/s]Calculating Mean and Std:  51%|█████▏    | 40/78 [00:17<00:07,  4.91it/s]Calculating Mean and Std:  53%|█████▎    | 41/78 [00:19<00:30,  1.23it/s]Calculating Mean and Std:  54%|█████▍    | 42/78 [00:20<00:22,  1.63it/s]Calculating Mean and Std:  55%|█████▌    | 43/78 [00:20<00:16,  2.10it/s]Calculating Mean and Std:  56%|█████▋    | 44/78 [00:20<00:12,  2.66it/s]Calculating Mean and Std:  58%|█████▊    | 45/78 [00:20<00:10,  3.26it/s]Calculating Mean and Std:  59%|█████▉    | 46/78 [00:20<00:08,  3.84it/s]Calculating Mean and Std:  60%|██████    | 47/78 [00:20<00:06,  4.44it/s]Calculating Mean and Std:  62%|██████▏   | 48/78 [00:20<00:05,  5.04it/s]Calculating Mean and Std:  63%|██████▎   | 49/78 [00:23<00:23,  1.24it/s]Calculating Mean and Std:  64%|██████▍   | 50/78 [00:23<00:16,  1.65it/s]Calculating Mean and Std:  65%|██████▌   | 51/78 [00:23<00:12,  2.13it/s]Calculating Mean and Std:  67%|██████▋   | 52/78 [00:23<00:09,  2.66it/s]Calculating Mean and Std:  68%|██████▊   | 53/78 [00:23<00:07,  3.26it/s]Calculating Mean and Std:  69%|██████▉   | 54/78 [00:23<00:06,  3.90it/s]Calculating Mean and Std:  71%|███████   | 55/78 [00:23<00:05,  4.53it/s]Calculating Mean and Std:  72%|███████▏  | 56/78 [00:24<00:04,  5.06it/s]Calculating Mean and Std:  73%|███████▎  | 57/78 [00:26<00:16,  1.24it/s]Calculating Mean and Std:  74%|███████▍  | 58/78 [00:26<00:12,  1.64it/s]Calculating Mean and Std:  76%|███████▌  | 59/78 [00:26<00:08,  2.13it/s]Calculating Mean and Std:  77%|███████▋  | 60/78 [00:26<00:06,  2.67it/s]Calculating Mean and Std:  78%|███████▊  | 61/78 [00:26<00:05,  3.25it/s]Calculating Mean and Std:  79%|███████▉  | 62/78 [00:27<00:04,  3.86it/s]Calculating Mean and Std:  81%|████████  | 63/78 [00:27<00:03,  4.42it/s]Calculating Mean and Std:  82%|████████▏ | 64/78 [00:27<00:02,  5.03it/s]Calculating Mean and Std:  83%|████████▎ | 65/78 [00:29<00:10,  1.24it/s]Calculating Mean and Std:  85%|████████▍ | 66/78 [00:29<00:07,  1.66it/s]Calculating Mean and Std:  86%|████████▌ | 67/78 [00:29<00:05,  2.16it/s]Calculating Mean and Std:  87%|████████▋ | 68/78 [00:29<00:03,  2.74it/s]Calculating Mean and Std:  88%|████████▊ | 69/78 [00:30<00:02,  3.36it/s]Calculating Mean and Std:  90%|████████▉ | 70/78 [00:30<00:02,  3.97it/s]Calculating Mean and Std:  91%|█████████ | 71/78 [00:30<00:01,  4.58it/s]Calculating Mean and Std:  92%|█████████▏| 72/78 [00:30<00:01,  5.17it/s]Calculating Mean and Std:  94%|█████████▎| 73/78 [00:32<00:04,  1.24it/s]Calculating Mean and Std:  95%|█████████▍| 74/78 [00:32<00:02,  1.67it/s]Calculating Mean and Std:  96%|█████████▌| 75/78 [00:33<00:01,  2.22it/s]Calculating Mean and Std:  97%|█████████▋| 76/78 [00:33<00:00,  2.88it/s]Calculating Mean and Std:  99%|█████████▊| 77/78 [00:33<00:00,  3.63it/s]Calculating Mean and Std: 100%|██████████| 78/78 [00:33<00:00,  2.34it/s]
+Mean: tensor([0.2855, 0.3228, 0.2819]), Std: tensor([0.1831, 0.1864, 0.1837])
+Load weights and biases from previous run
+Epoch 0001/0100
+Epoch 0002/0100
+Epoch 0003/0100
+Epoch 0004/0100
+Epoch 0005/0100
+Epoch 0006/0100
+Epoch 0007/0100
+Epoch 0008/0100
+Epoch 0009/0100
+Epoch 0010/0100
+Epoch 0011/0100
+Epoch 0012/0100
+Epoch 0013/0100
+Epoch 0014/0100
+Epoch 0015/0100
+Epoch 0016/0100
+Epoch 0017/0100
+Epoch 0018/0100
+Epoch 0019/0100
+Epoch 0020/0100
+Epoch 0021/0100
+Epoch 0022/0100
+Epoch 0023/0100
+Epoch 0024/0100
+Epoch 0025/0100
+Epoch 0026/0100
+Epoch 0027/0100
+Epoch 0028/0100
+Epoch 0029/0100
+Epoch 0030/0100
+Epoch 0031/0100
+Epoch 0032/0100
+Epoch 0033/0100
+Epoch 0034/0100
+Epoch 0035/0100
+Epoch 0036/0100
+Epoch 0037/0100
+Epoch 0038/0100
+Epoch 0039/0100
+Epoch 0040/0100
+Epoch 0041/0100
+Epoch 0042/0100
+Epoch 0043/0100
+Epoch 0044/0100
+Epoch 0045/0100
+Epoch 0046/0100
+Epoch 0047/0100
+Epoch 0048/0100
+Epoch 0049/0100
+Epoch 0050/0100
+Epoch 0051/0100
+Epoch 0052/0100
+Epoch 0053/0100
+Epoch 0054/0100
+Epoch 0055/0100
+Epoch 0056/0100
+Epoch 0057/0100
+Epoch 0058/0100
+Epoch 0059/0100
+Epoch 0060/0100
+Epoch 0061/0100
+Epoch 0062/0100
+Epoch 0063/0100
+Epoch 0064/0100
+Epoch 0065/0100
+Epoch 0066/0100
+Epoch 0067/0100
+Epoch 0068/0100
+Epoch 0069/0100
+Epoch 0070/0100
+Epoch 0071/0100
+Epoch 0072/0100
+Epoch 0073/0100
+Epoch 0074/0100
+Epoch 0075/0100
+Epoch 0076/0100
+Epoch 0077/0100
+Epoch 0078/0100
+Epoch 0079/0100
+Epoch 0080/0100
+Epoch 0081/0100
+Epoch 0082/0100
+Epoch 0083/0100
+Epoch 0084/0100
+Epoch 0085/0100
+Epoch 0086/0100
+Epoch 0087/0100
+Epoch 0088/0100
+Epoch 0089/0100
+Epoch 0090/0100
+Epoch 0091/0100
+Epoch 0092/0100
+Epoch 0093/0100
+Epoch 0094/0100
+Epoch 0095/0100
+Epoch 0096/0100
+Epoch 0097/0100
+Epoch 0098/0100
+Epoch 0099/0100
+Epoch 0100/0100
+wandb: updating run config
+wandb: 
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb:         epoch ▁▁▁▁▂▂▂▂▂▂▃▃▃▃▄▄▄▅▅▅▅▅▅▅▅▅▆▆▆▆▇▇▇▇▇▇▇███
+wandb: learning_rate ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:    train_loss █▆▇█▆▆▆▄▅▅▅▅▅▄▆▅▄▃▄▃▃▃▃▆▃▂▂▃▃▂▃▂▂▂▂▁▂▁▂▃
+wandb:    valid_loss ▅▅▄▄▂▃▁▃▂▁▄▄▁▂▁▂█▅▁▁▂▂▄▃▂▃▃▄▅▅▄▃▃▆▅▄▄▄▄█
+wandb: 
+wandb: Run summary:
+wandb:         epoch 100
+wandb: learning_rate 0.001
+wandb:    train_loss 0.06392
+wandb:    valid_loss 0.30527
+wandb: 
+wandb: 🚀 View run unet-training-experiment-43 at: https://wandb.ai/nordic-video-research/5lsm0-cityscapes-segmentation/runs/sy6whj9b
+wandb: ⭐️ View project at: https://wandb.ai/nordic-video-research/5lsm0-cityscapes-segmentation
+wandb: Synced 5 W&B file(s), 200 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: /home/scur1330/NNCV/wandb/wandb/run-20250612_150606-sy6whj9b/logs
+Training complete!
+
+JOB STATISTICS
+==============
+Job ID: 12307788
+Cluster: snellius
+User/Group: scur1330/scur1330
+State: RUNNING
+Nodes: 1
+Cores per node: 32
+CPU Utilized: 00:00:00
+CPU Efficiency: 0.00% of 5-06:58:08 core-walltime
+Job Wall-clock time: 03:58:04
+Memory Utilized: 0.00 MB
+Memory Efficiency: 0.00% of 180.00 GB (180.00 GB/node)
+WARNING: Efficiency statistics can only be obtained after the job has ended as seff tool is based on the accounting database data.

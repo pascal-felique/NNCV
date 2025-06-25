@@ -1,0 +1,143 @@
+wandb: Currently logged in as: pascal_felique (nordic-video-research) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: Currently logged in as: pascal_felique (nordic-video-research) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: Using wandb-core as the SDK backend.  Please refer to https://wandb.me/wandb-core for more information.
+wandb: Tracking run with wandb version 0.19.6
+wandb: Run data is saved locally in /home/scur1330/NNCV/wandb/wandb/run-20250613_141635-vxqa77f0
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run unet-training-experiment-44
+wandb: ⭐️ View project at https://wandb.ai/nordic-video-research/5lsm0-cityscapes-segmentation
+wandb: 🚀 View run at https://wandb.ai/nordic-video-research/5lsm0-cityscapes-segmentation/runs/vxqa77f0
+Load weights and biases from previous run
+Epoch 0001/0100
+Epoch 0002/0100
+Epoch 0003/0100
+Epoch 0004/0100
+Epoch 0005/0100
+Epoch 0006/0100
+Epoch 0007/0100
+Epoch 0008/0100
+Epoch 0009/0100
+Epoch 0010/0100
+Epoch 0011/0100
+Epoch 0012/0100
+Epoch 0013/0100
+Epoch 0014/0100
+Epoch 0015/0100
+Epoch 0016/0100
+Epoch 0017/0100
+Epoch 0018/0100
+Epoch 0019/0100
+Epoch 0020/0100
+Epoch 0021/0100
+Epoch 0022/0100
+Epoch 0023/0100
+Epoch 0024/0100
+Epoch 0025/0100
+Epoch 0026/0100
+Epoch 0027/0100
+Epoch 0028/0100
+Epoch 0029/0100
+Epoch 0030/0100
+Epoch 0031/0100
+Epoch 0032/0100
+Epoch 0033/0100
+Epoch 0034/0100
+Epoch 0035/0100
+Epoch 0036/0100
+Epoch 0037/0100
+Epoch 0038/0100
+Epoch 0039/0100
+Epoch 0040/0100
+Epoch 0041/0100
+Epoch 0042/0100
+Epoch 0043/0100
+Epoch 0044/0100
+Epoch 0045/0100
+Epoch 0046/0100
+Epoch 0047/0100
+Epoch 0048/0100
+Epoch 0049/0100
+Epoch 0050/0100
+Epoch 0051/0100
+Epoch 0052/0100
+Epoch 0053/0100
+Epoch 0054/0100
+Epoch 0055/0100
+Epoch 0056/0100
+Epoch 0057/0100
+Epoch 0058/0100
+Epoch 0059/0100
+Epoch 0060/0100
+Epoch 0061/0100
+Epoch 0062/0100
+Epoch 0063/0100
+Epoch 0064/0100
+Epoch 0065/0100
+Epoch 0066/0100
+Epoch 0067/0100
+Epoch 0068/0100
+Epoch 0069/0100
+Epoch 0070/0100
+Epoch 0071/0100
+Epoch 0072/0100
+Epoch 0073/0100
+Epoch 0074/0100
+Epoch 0075/0100
+Epoch 0076/0100
+Epoch 0077/0100
+Epoch 0078/0100
+Epoch 0079/0100
+Epoch 0080/0100
+Epoch 0081/0100
+Epoch 0082/0100
+Epoch 0083/0100
+Epoch 0084/0100
+Epoch 0085/0100
+Epoch 0086/0100
+Epoch 0087/0100
+Epoch 0088/0100
+Epoch 0089/0100
+Epoch 0090/0100
+Epoch 0091/0100
+Epoch 0092/0100
+Epoch 0093/0100
+Epoch 0094/0100
+Epoch 0095/0100
+Epoch 0096/0100
+Epoch 0097/0100
+Epoch 0098/0100
+Epoch 0099/0100
+Epoch 0100/0100
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb:         epoch ▁▁▁▂▂▂▂▂▂▂▂▃▃▃▄▄▄▄▅▅▅▅▅▅▅▆▆▆▆▆▇▇▇▇▇█████
+wandb: learning_rate ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:    train_loss █▆▅▅▇▅▅▆▅▄▄▄▃▄▄▄▄▃▄▂▃▃▃▃▃▂▃▃▃▃▂▂▁▁▂▂▃▂▂▂
+wandb:    valid_loss ▅▄▆▄▃██▄▃▁█▂▃▂▅▃▂▄▁▄▅▄▄▄▂▅▄▆▃▆▇▄▄▅▄▄▄▅▇▇
+wandb: 
+wandb: Run summary:
+wandb:         epoch 100
+wandb: learning_rate 0.001
+wandb:    train_loss 0.07725
+wandb:    valid_loss 0.27401
+wandb: 
+wandb: 🚀 View run unet-training-experiment-44 at: https://wandb.ai/nordic-video-research/5lsm0-cityscapes-segmentation/runs/vxqa77f0
+wandb: ⭐️ View project at: https://wandb.ai/nordic-video-research/5lsm0-cityscapes-segmentation
+wandb: Synced 5 W&B file(s), 200 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: /home/scur1330/NNCV/wandb/wandb/run-20250613_141635-vxqa77f0/logs
+Training complete!
+
+JOB STATISTICS
+==============
+Job ID: 12343040
+Cluster: snellius
+User/Group: scur1330/scur1330
+State: COMPLETED (exit code 0)
+Nodes: 1
+Cores per node: 32
+CPU Utilized: 22:49:30
+CPU Efficiency: 8.70% of 10-22:21:52 core-walltime
+Job Wall-clock time: 08:11:56
+Memory Utilized: 6.90 GB
+Memory Efficiency: 3.83% of 180.00 GB (180.00 GB/node)
