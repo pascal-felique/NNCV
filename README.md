@@ -115,6 +115,8 @@ There is also a variant of Curriculum Learning with a Dice Loss component includ
 
 The following files need to be modified before starting to train with Curriculum Learning and Knowledge Distillation:
 
+CONFIGURATION SETTINGS IN SCRIPT THAT LAUNCHES PYTHON CODE
+
 - **main_distillation.sh**:
 
 You have to update the new experiment id and provide the location of the previous trained Student model which was trained at a lower resolution.
@@ -130,6 +132,8 @@ The same trained Teacher model will be used during the entire curriculum of the 
 - **main_distillation_dice.sh**:
 
 There is also a variant of Curriculum Learning and Knowledge Distillation with a Dice Loss component included in the Loss calculation.
+
+CONFIGURATION SETTINGS IN ACTUAL PYTHON CODE
 
 - **train_distillation.py**:
 
