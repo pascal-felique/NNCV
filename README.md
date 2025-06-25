@@ -167,18 +167,26 @@ There is also a variant of Curriculum Learning and Knowledge Distillation with a
 
 There are different slurm job scripts to either train with Curriculum Learning or train with Curriculum Learning and Knowledge Distillation.
 
+## Training with Curriculum Learning
+
 - **jobscript_slurm_unet.sh**: Training with U-Net model architecture
 - **jobscript_slurm.sh**: Training with Fast-SCNN model architecture
 
 This is the slurm job script to launch the training with Curriculum Learning.
 
+Alternative: Curriculum Learning with Dice Loss component
+
 - **jobscript_slurm_dice.sh**:
 
 There is also a variant of Curriculum Learning with a Dice Loss component included in the Loss calculation.
 
+## Training with Curriculum Learning and Knowledge Distillation
+
 - **jobscript_slurm_distillation.sh**:
 
 This is the slurm job script to launch the training with Curriculum Learning and Knowledge Distillation.
+
+Alternative: Curriculum Learning and Knowledge Distillation with Dice Loss component
 
 - **jobscript_slurm_distillation_dice.sh**:
 
@@ -186,13 +194,17 @@ There is also a variant of Curriculum Learning and Knowledge Distillation with a
 
 ## Tool to evaluate the efficiency of a trained model on the validation dataset
 
-- **main_efficiency_unet.sh**: Script to launch efficiency tool for U-Net model architecture
-- **evaluate_efficiency_unet.py**: Python code of efficiency tool for U-Net model architecture
+### Configuration settings in script that launches Python code
 
+- **main_efficiency_unet.sh**: Script to launch efficiency tool for U-Net model architecture
 - **main_efficiency.sh**: Script to launch efficiency tool for Fast-SCNN model architecture
-- **evaluate_efficiency.py**: Python code of efficiency tool for Fast-SCNN model architecture
 
 You have to copy the trained model that you want to evaluate in the models folder to the file model.pth in the same folder.
+
+### Configuration settings in actual Python code
+
+- **evaluate_efficiency_unet.py**: Python code of efficiency tool for U-Net model architecture
+- **evaluate_efficiency.py**: Python code of efficiency tool for Fast-SCNN model architecture
 
 You have to make sure that the resized image dimensions point to the resolution on which the model has been trained:
 
@@ -204,7 +216,7 @@ resized_image_width, resized_image_height
 
 This folder containes the trained models:
 
-TRAINED FAST-SCNN MODELS
+### Trained Fast-SCNN models
 
 Models 1-5 belong to Curriculum Learning Run 1 (no weight decay during training)
 
@@ -240,7 +252,7 @@ The trained Teacher model used for Knowledge Distillation belongs to Model 30 wh
 
 Not available due to time constraints
 
-TRAINED U-NET MODELS
+### Trained U-Net models
 
 Models 41-45 belong to Curriculum Learning Run 9 (no weight decay during training)
 
@@ -250,7 +262,7 @@ Models 41-45 belong to Curriculum Learning Run 9 (no weight decay during trainin
 
 This folder contains the outputs of the slurm jobs that were run for training the models:
 
-LOG FILES OF TRAINED FAST-SCNN MODELS
+### Log files of trained Fast-SCNN models
 
 Outputs 1-5 belong to Curriculum Learning Run 1 (no weight decay during training)
 
@@ -278,7 +290,7 @@ Outputs 36-40 belong to Curriculum Learning Run 8 (with Knowledge Distillation) 
 
 Not available due to time constraints
 
-LOG FILES OF TRAINED U-NET MODELS
+### Log files of trained U-Net models
 
 Outputs 41-45 belong to Curriculum Learning Run 9 (no weight decay during training)
 
