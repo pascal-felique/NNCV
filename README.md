@@ -77,6 +77,8 @@ We had to make only slight changes to integrate this model in the existing train
 
 The following files need to be modified before starting to train with Curriculum Learning:
 
+CONFIGURATION SETTINGS IN SCRIPT THAT LAUNCHES PYTHON CODE
+
 - **main_unet.sh**: Training with U-Net model architecture
 - **main.sh**: Training with Fast-SCNN model architecture
 
@@ -89,6 +91,8 @@ If you start the training at the initial lowest resolution, then you have to spe
 - **main_dice.sh**:
 
 There is also a variant of Curriculum Learning with a Dice Loss component included in the Loss calculation.
+
+CONFIGURATION SETTINGS IN ACTUAL PYTHON CODE
 
 - **train_unet.py**: Training with U-Net model architecture
 - **train.py**: Training with Fast-SCNN model architecture
