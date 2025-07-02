@@ -14,7 +14,7 @@ The trained models and slurm job outputs are provided as well.
 
 There is a measurements folder that contains several Excel sheets with calculations and measurements.
 
-There is a figures folder with training loss and validation loss graphs, and other measurements.
+There is a figures folder with training loss and validation loss graphs, and pictures of predictions.
 
 There is a references folder with the original paper about the Fast-SCNN model architecture and a presentation about Fast-SCNN from BMVC 2019.
 
@@ -47,7 +47,7 @@ There is an Excel sheet with the durations of the simulations to indicate that t
 
 There is an Excel sheet with the efficiency measurements for the different trained models.
 
-There is a figures folder with training loss and validation loss graphs, and other measurements.
+There is a figures folder with training loss and validation loss graphs, and pictures of predictions.
 
 There is a references folder with the original paper about the Fast-SCNN model architecture and a presentation about Fast-SCNN from BMVC 2019.
 
@@ -318,7 +318,7 @@ This is an Excel sheet with the efficiency measurements for the different traine
 
 - **figures/**:
 
-This folder contains training loss and validation graphs that were captured from the Weights & Biases platform.
+This folder contains training loss and validation graphs and pictures from predictions that were captured from the Weights & Biases platform.
 
 ## References
 
