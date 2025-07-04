@@ -1,3 +1,0 @@
-Model size [MB]: 4.54347
-GFLOPS: 0.00109
-Params: 1.13805
