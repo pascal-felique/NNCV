@@ -1,0 +1,4 @@
+Efficient_Performance: 1.4267
+Model_Size: 0.01508
+Efficiency_Score: 360.95371
+MDice_efficiency: 0.51497
